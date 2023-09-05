@@ -1,0 +1,46 @@
+{
+    "sourceFile": "src/components/button/Button.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 7,
+            "patches": [
+                {
+                    "date": 1693922458934,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1693922544489,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-import { oneOf, bool, node, string } from 'prop-types';\n+import { oneOf, bool, node, string, object, onClick } from 'prop-types';\n import { BUTTON_TYPES } from './constants';\n \n const Button = ({ id, disabled, type = BUTTON_TYPES.BUTTON, className, children}) => {\n \treturn (\n@@ -7,8 +7,11 @@\n             id={id}\n             disabled={disabled}\n             type={type}\n \t\t\tclassName={`${className && className}`}\n+            style={style}\n+            onClick={(e) => {\n+            }}\n         >\n             {children}\n         </button>\n \t);\n@@ -17,9 +20,11 @@\n Button.propTypes = {\n     id:string,\n     disabled: bool,\n     type: oneOf(Object.values(BUTTON_TYPES)),\n+    style: object,\n \tchildren: node,\n \tclassName: string,\n+    onClick: func,\n };\n \n export default Button;\n"
+                },
+                {
+                    "date": 1693922561774,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n-import { oneOf, bool, node, string, object, onClick } from 'prop-types';\n+import { oneOf, bool, node, string, object, func } from 'prop-types';\n import { BUTTON_TYPES } from './constants';\n \n-const Button = ({ id, disabled, type = BUTTON_TYPES.BUTTON, className, children}) => {\n+const Button = ({ id, disabled, type = BUTTON_TYPES.BUTTON, className, children, style}) => {\n \treturn (\n \t\t<button\n             id={id}\n             disabled={disabled}\n"
+                },
+                {
+                    "date": 1693922568941,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,10 +8,9 @@\n             disabled={disabled}\n             type={type}\n \t\t\tclassName={`${className && className}`}\n             style={style}\n-            onClick={(e) => {\n-            }}\n+            onClick={(e) => {}}\n         >\n             {children}\n         </button>\n \t);\n"
+                },
+                {
+                    "date": 1693923022561,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,7 @@\n-import { oneOf, bool, node, string, object, func } from 'prop-types';\n-import { BUTTON_TYPES } from './constants';\n+import { bool, node, string, object, func } from 'prop-types';\n \n-const Button = ({ id, disabled, type = BUTTON_TYPES.BUTTON, className, children, style}) => {\n+const Button = ({ id, disabled, type, className, children, style}) => {\n \treturn (\n \t\t<button\n             id={id}\n             disabled={disabled}\n@@ -18,9 +17,8 @@\n \n Button.propTypes = {\n     id:string,\n     disabled: bool,\n-    type: oneOf(Object.values(BUTTON_TYPES)),\n     style: object,\n \tchildren: node,\n \tclassName: string,\n     onClick: func,\n"
+                },
+                {
+                    "date": 1693924267232,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,6 @@\n import { bool, node, string, object, func } from 'prop-types';\n+import { BUTTON_SIZE_TYPES, BUTTON_CLASS_TYPES } from './constants';\n \n const Button = ({ id, disabled, type, className, children, style}) => {\n \treturn (\n \t\t<button\n"
+                },
+                {
+                    "date": 1693924344812,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,12 +5,13 @@\n \treturn (\n \t\t<button\n             id={id}\n             disabled={disabled}\n-            type={type}\n+            type={BUTTON_CLASS_TYPES}\n \t\t\tclassName={`${className && className}`}\n             style={style}\n             onClick={(e) => {}}\n+            buttonSize={BUTTON_SIZE_TYPES}\n         >\n             {children}\n         </button>\n \t);\n"
+                },
+                {
+                    "date": 1693924409942,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,13 @@\n-import { bool, node, string, object, func } from 'prop-types';\n+import { oneOf, bool, node, string, object, func } from 'prop-types';\n import { BUTTON_SIZE_TYPES, BUTTON_CLASS_TYPES } from './constants';\n \n-const Button = ({ id, disabled, type, className, children, style}) => {\n+const Button = ({ id, disabled, uiType, className, children, style}) => {\n \treturn (\n \t\t<button\n             id={id}\n             disabled={disabled}\n-            type={BUTTON_CLASS_TYPES}\n+            uiType={BUTTON_CLASS_TYPES}\n \t\t\tclassName={`${className && className}`}\n             style={style}\n             onClick={(e) => {}}\n             buttonSize={BUTTON_SIZE_TYPES}\n@@ -23,7 +23,9 @@\n     style: object,\n \tchildren: node,\n \tclassName: string,\n     onClick: func,\n+    uiType: oneOf(Object.values(BUTTON_CLASS_TYPES)),\n+    buttonSize: oneOf(Object.values(BUTTON_SIZE_TYPES)),\n };\n \n export default Button;\n"
+                }
+            ],
+            "date": 1693922458934,
+            "name": "Commit-0",
+            "content": "import { oneOf, bool, node, string } from 'prop-types';\nimport { BUTTON_TYPES } from './constants';\n\nconst Button = ({ id, disabled, type = BUTTON_TYPES.BUTTON, className, children}) => {\n\treturn (\n\t\t<button\n            id={id}\n            disabled={disabled}\n            type={type}\n\t\t\tclassName={`${className && className}`}\n        >\n            {children}\n        </button>\n\t);\n};\n\nButton.propTypes = {\n    id:string,\n    disabled: bool,\n    type: oneOf(Object.values(BUTTON_TYPES)),\n\tchildren: node,\n\tclassName: string,\n};\n\nexport default Button;\n"
+        }
+    ]
+}

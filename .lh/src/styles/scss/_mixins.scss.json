@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/styles/scss/_mixins.scss",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1693920970715,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1693921070113,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -66,12 +66,5 @@\n \tfont-size: var(--t9-font-size);\n \tletter-spacing: -0.5px;\n \tline-height: var(--t9-line-height);\n \t@content;\n-}\n-\n-@mixin text10 {\n-\tfont-size: var(--t10-font-size);\n-\tletter-spacing: -0.5px;\n-\tline-height: var(--t10-line-height);\n-\t@content;\n }\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1693920970715,
+            "name": "Commit-0",
+            "content": "// Typography\n@mixin text24 {\n\tfont-size: var(--t1-font-size);\n\tletter-spacing: -0.5px;\n\tline-height: var(--t1-line-height);\n\t@content;\n}\n\n@mixin text22 {\n\tfont-size: var(--t2-font-size);\n\tletter-spacing: -0.5px;\n\tline-height: var(--t2-line-height);\n\t@content;\n}\n\n@mixin text20 {\n\tfont-size: var(--t3-font-size);\n\tletter-spacing: -0.5px;\n\tline-height: var(--t3-line-height);\n\t@content;\n}\n\n@mixin text18 {\n\tfont-size: var(--t4-font-size);\n\tletter-spacing: -0.5px;\n\tline-height: var(--t4-line-height);\n\t@content;\n}\n\n@mixin text16 {\n\tfont-size: var(--t5-font-size);\n\tletter-spacing: -0.5px;\n\tline-height: var(--t5-line-height);\n\t@content;\n}\n\n@mixin text14 {\n\tfont-size: var(--t6-font-size);\n\tletter-spacing: -0.5px;\n\tline-height: var(--t6-line-height);\n\t@content;\n}\n\n@mixin text14-1 {\n\tfont-size: var(--t6-font-size);\n\tletter-spacing: -0.5px;\n\tline-height: var(--t6-1-line-height);\n\t@content;\n}\n\n@mixin text13 {\n\tfont-size: var(--t7-font-size);\n\tletter-spacing: -0.5px;\n\tline-height: var(--t7-line-height);\n\t@content;\n}\n\n@mixin text12 {\n\tfont-size: var(--t8-font-size);\n\tletter-spacing: -0.5px;\n\tline-height: var(--t8-line-height);\n\t@content;\n}\n\n@mixin text11 {\n\tfont-size: var(--t9-font-size);\n\tletter-spacing: -0.5px;\n\tline-height: var(--t9-line-height);\n\t@content;\n}\n\n@mixin text10 {\n\tfont-size: var(--t10-font-size);\n\tletter-spacing: -0.5px;\n\tline-height: var(--t10-line-height);\n\t@content;\n}"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/styles/scss/main.scss",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1693919404195,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1693920995001,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,2 +1,5 @@\n+@import \"./_variables\";\n+@import \"./_mixins\";\n\\ No newline at end of file\n+@import \"./_font\";\n @import \"./_reset\";\n-@import \"./_variables\";\n+@import \"./common\";\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1693919404195,
+            "name": "Commit-0",
+            "content": "@import \"./_reset\";\n@import \"./_variables\";"
+        }
+    ]
+}

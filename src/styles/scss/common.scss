@@ -1,0 +1,31 @@
+@import './_variables';
+@import './_mixins';
+
+html {
+	--t1-font-size: 24px;
+	--t2-font-size: 22px;
+	--t3-font-size: 20px;
+	--t4-font-size: 18px;
+	--t5-font-size: 16px;
+	--t6-font-size: 14px;
+	--t7-font-size: 13px;
+	--t8-font-size: 12px;
+	--t9-font-size: 11px;
+
+	--t1-line-height: 36px;
+	--t2-line-height: 32px;
+	--t3-line-height: 32px;
+	--t4-line-height: 28px;
+	--t5-line-height: 24px;
+	--t6-line-height: 24px;
+	--t6-1-line-height: 20px;
+	--t7-line-height: 20px;
+	--t8-line-height: 18px;
+	--t9-line-height: 16px;
+}
+
+body {
+	@include text14{
+		color: $greyscale900;
+	}
+}

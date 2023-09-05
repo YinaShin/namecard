@@ -1,0 +1,26 @@
+{
+    "sourceFile": "src/components/Button.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1693921856498,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1693922191512,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n import { bool, node, string } from 'prop-types';\n+import { BUTTON_TYPES } from './constants';\n \n-const Button = ({ id, disabled, type, className, children}) => {\n+const Button = ({ id, disabled, type = BUTTON_TYPES.BUTTON, className, children}) => {\n \treturn (\n \t\t<button\n             id={id}\n             disabled={disabled}\n"
+                },
+                {
+                    "date": 1693923454931,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,14 +1,15 @@\n-import { bool, node, string } from 'prop-types';\n-import { BUTTON_TYPES } from './constants';\n+import { bool, node, string, object, func } from 'prop-types';\n \n-const Button = ({ id, disabled, type = BUTTON_TYPES.BUTTON, className, children}) => {\n+const Button = ({ id, disabled, type, className, children, style}) => {\n \treturn (\n \t\t<button\n             id={id}\n             disabled={disabled}\n             type={type}\n \t\t\tclassName={`${className && className}`}\n+            style={style}\n+            onClick={(e) => {}}\n         >\n             {children}\n         </button>\n \t);\n@@ -16,9 +17,11 @@\n \n Button.propTypes = {\n     id:string,\n     disabled: bool,\n+    style: object,\n \tchildren: node,\n \tclassName: string,\n+    onClick: func,\n };\n \n export default Button;\n"
+                }
+            ],
+            "date": 1693921856498,
+            "name": "Commit-0",
+            "content": "import { bool, node, string } from 'prop-types';\n\nconst Button = ({ id, disabled, type, className, children}) => {\n\treturn (\n\t\t<button\n            id={id}\n            disabled={disabled}\n            type={type}\n\t\t\tclassName={`${className && className}`}\n        >\n            {children}\n        </button>\n\t);\n};\n\nButton.propTypes = {\n    id:string,\n    disabled: bool,\n\tchildren: node,\n\tclassName: string,\n};\n\nexport default Button;\n"
+        }
+    ]
+}

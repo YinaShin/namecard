@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/components/button/constants/BUTTON.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1693922406379,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1693924181988,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,30 +14,5 @@\n \tLARGE: 'large',\n \tMEDIUM: 'medium',\n \tSMALL: 'small',\n \tX_SMALL: 'x-small',\n-};\n-\n-export const TEXT_BUTTON_CLASS_TYPES = {\n-\tICON: 'icon',\n-\tTEXT: 'text',\n-\tUNDERLINE: 'underline',\n-\tREFRESH: 'refresh',\n-\tCOPY: 'copy',\n-};\n-\n-export const TEXT_BUTTON_SIZE_TYPES = {\n-\tH20: 'h20',\n-\tH24: 'h24',\n-\tH40: 'h40',\n-\tH32: 'h32',\n-};\n-\n-export const SPLIT = {\n-\tFULL: 'full',\n-\t/** 균등 분할 */\n-\tHALF: 'half',\n-\t/** 비대칭으로 분할 */\n-\tASYMMETRIC: 'asymmetric',\n-\t/** 3등분 균등 분할 */\n-\tTHIRDS: 'thirds',\n-};\n+};\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1693922406379,
+            "name": "Commit-0",
+            "content": "export const EMPTY = '';\n\nexport const BUTTON_CLASS_TYPES = {\n\tPRIMARY: 'primary',\n\tSECONDARY01: 'secondary-2nd', // 퍼블상 비어있음, 나중에 생길것을 대비해 클래스명이랑 매칭 시켜둠\n\tSECONDARY02: 'secondary-2nd',\n\tSECONDARY03: 'secondary-3rd',\n\tSECONDARY04: 'secondary-4th',\n\tSECONDARY05: 'secondary-5th',\n};\n\nexport const BUTTON_SIZE_TYPES = {\n\tX_LARGE: 'x-large',\n\tLARGE: 'large',\n\tMEDIUM: 'medium',\n\tSMALL: 'small',\n\tX_SMALL: 'x-small',\n};\n\nexport const TEXT_BUTTON_CLASS_TYPES = {\n\tICON: 'icon',\n\tTEXT: 'text',\n\tUNDERLINE: 'underline',\n\tREFRESH: 'refresh',\n\tCOPY: 'copy',\n};\n\nexport const TEXT_BUTTON_SIZE_TYPES = {\n\tH20: 'h20',\n\tH24: 'h24',\n\tH40: 'h40',\n\tH32: 'h32',\n};\n\nexport const SPLIT = {\n\tFULL: 'full',\n\t/** 균등 분할 */\n\tHALF: 'half',\n\t/** 비대칭으로 분할 */\n\tASYMMETRIC: 'asymmetric',\n\t/** 3등분 균등 분할 */\n\tTHIRDS: 'thirds',\n};\n"
+        }
+    ]
+}

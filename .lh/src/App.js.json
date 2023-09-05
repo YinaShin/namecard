@@ -1,0 +1,66 @@
+{
+    "sourceFile": "src/App.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 12,
+            "patches": [
+                {
+                    "date": 1693918366044,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1693922716885,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,15 +1,17 @@\n import './App.css';\n import './styles/scss/main.scss';\n+import PageLayout from './layouts/PageLayout';\n import Header from './layouts/Header';\n-import PageLayout from './layouts/PageLayout';\n+import Button from './components/button';\n \n function App() {\n     return (\n     <PageLayout>\n       <Header menu={true}>\n         헤더입니다\n       </Header>\n+\n     </PageLayout>\n     );\n }\n \n"
+                },
+                {
+                    "date": 1693922763803,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import './App.css';\n import './styles/scss/main.scss';\n import PageLayout from './layouts/PageLayout';\n import Header from './layouts/Header';\n-import Button from './components/button';\n+import Button from './components/button/Button';\n \n function App() {\n     return (\n     <PageLayout>\n"
+                },
+                {
+                    "date": 1693922886694,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import './App.css';\n import './styles/scss/main.scss';\n import PageLayout from './layouts/PageLayout';\n import Header from './layouts/Header';\n-import Button from './components/button/Button';\n+import Button from './components/button';\n \n function App() {\n     return (\n     <PageLayout>\n"
+                },
+                {
+                    "date": 1693922986184,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import './App.css';\n import './styles/scss/main.scss';\n import PageLayout from './layouts/PageLayout';\n import Header from './layouts/Header';\n-import Button from './components/button';\n+import Button from './components/button/Button';\n \n function App() {\n     return (\n     <PageLayout>\n"
+                },
+                {
+                    "date": 1693923201577,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import './App.css';\n import './styles/scss/main.scss';\n import PageLayout from './layouts/PageLayout';\n import Header from './layouts/Header';\n-import Button from './components/button/Button';\n+import Button from './components/';\n \n function App() {\n     return (\n     <PageLayout>\n"
+                },
+                {
+                    "date": 1693923319808,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n     <PageLayout>\n       <Header menu={true}>\n         헤더입니다\n       </Header>\n-\n+      <Button>나는버튼임</Button>\n     </PageLayout>\n     );\n }\n \n"
+                },
+                {
+                    "date": 1693923334969,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import './App.css';\n import './styles/scss/main.scss';\n import PageLayout from './layouts/PageLayout';\n import Header from './layouts/Header';\n-import Button from './components/';\n+import Button from './components';\n \n function App() {\n     return (\n     <PageLayout>\n"
+                },
+                {
+                    "date": 1693923347303,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import './App.css';\n import './styles/scss/main.scss';\n import PageLayout from './layouts/PageLayout';\n import Header from './layouts/Header';\n-import Button from './components';\n+import Button from './components/button';\n \n function App() {\n     return (\n     <PageLayout>\n"
+                },
+                {
+                    "date": 1693923379056,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import './App.css';\n import './styles/scss/main.scss';\n import PageLayout from './layouts/PageLayout';\n import Header from './layouts/Header';\n-import Button from './components/button';\n+import Button from './components';\n \n function App() {\n     return (\n     <PageLayout>\n"
+                },
+                {
+                    "date": 1693923712187,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import './App.css';\n import './styles/scss/main.scss';\n import PageLayout from './layouts/PageLayout';\n import Header from './layouts/Header';\n-import Button from './components';\n+import { Button } from './components';\n \n function App() {\n     return (\n     <PageLayout>\n"
+                },
+                {
+                    "date": 1693923750802,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,8 +10,13 @@\n       <Header menu={true}>\n         헤더입니다\n       </Header>\n       <Button>나는버튼임</Button>\n+      <Button>나는버튼임</Button>\n+      <Button>나는버튼임</Button>\n+      <Button>나는버튼임</Button>\n+      <Button>나는버튼임</Button>\n+      <Button>나는버튼임</Button>\n     </PageLayout>\n     );\n }\n \n"
+                },
+                {
+                    "date": 1693923774128,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,13 +10,8 @@\n       <Header menu={true}>\n         헤더입니다\n       </Header>\n       <Button>나는버튼임</Button>\n-      <Button>나는버튼임</Button>\n-      <Button>나는버튼임</Button>\n-      <Button>나는버튼임</Button>\n-      <Button>나는버튼임</Button>\n-      <Button>나는버튼임</Button>\n     </PageLayout>\n     );\n }\n \n"
+                }
+            ],
+            "date": 1693918366044,
+            "name": "Commit-0",
+            "content": "import './App.css';\nimport './styles/scss/main.scss';\nimport Header from './layouts/Header';\nimport PageLayout from './layouts/PageLayout';\n\nfunction App() {\n    return (\n    <PageLayout>\n      <Header menu={true}>\n        헤더입니다\n      </Header>\n    </PageLayout>\n    );\n}\n\nexport default App;\n"
+        }
+    ]
+}

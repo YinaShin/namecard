@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/components/button/constants/index.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1693922844334,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1693924530757,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,14 +1,14 @@\n import {\n \tEMPTY,\n \tBUTTON_CLASS_TYPES,\n \tBUTTON_SIZE_TYPES,\n-\tTEXT_BUTTON_CLASS_TYPES,\n-\tTEXT_BUTTON_SIZE_TYPES,\n-\tOPT_BUTTON_CLASS_TYPES,\n-\tOVERFLOW_BUTTON_CLASS_TYPES,\n-\tBUTTON_TYPES,\n-\tBOTTOM_BUTTON_TYPES,\n+\t// TEXT_BUTTON_CLASS_TYPES,\n+\t// TEXT_BUTTON_SIZE_TYPES,\n+\t// OPT_BUTTON_CLASS_TYPES,\n+\t// OVERFLOW_BUTTON_CLASS_TYPES,\n+\t// BUTTON_TYPES,\n+\t// BOTTOM_BUTTON_TYPES,\n \tSPLIT,\n } from './BUTTON';\n // import {\n // \tWHITE_PLUS,\n@@ -26,15 +26,15 @@\n export {\n \tEMPTY,\n \tBUTTON_CLASS_TYPES,\n \tBUTTON_SIZE_TYPES,\n-\tTEXT_BUTTON_CLASS_TYPES,\n-\tTEXT_BUTTON_SIZE_TYPES,\n-\tBUTTON_TYPES,\n-\tBOTTOM_BUTTON_TYPES,\n-\tSPLIT,\n-\tOPT_BUTTON_CLASS_TYPES,\n-\tOVERFLOW_BUTTON_CLASS_TYPES,\n+\t// TEXT_BUTTON_CLASS_TYPES,\n+\t// TEXT_BUTTON_SIZE_TYPES,\n+\t// BUTTON_TYPES,\n+\t// BOTTOM_BUTTON_TYPES,\n+\t// SPLIT,\n+\t// OPT_BUTTON_CLASS_TYPES,\n+\t// OVERFLOW_BUTTON_CLASS_TYPES,\n \t// WHITE_PLUS,\n \t// BLUE_PLUS,\n \t// BLACK_PLUS,\n \t// ARROW_RIGHT,\n"
+                }
+            ],
+            "date": 1693922844334,
+            "name": "Commit-0",
+            "content": "import {\n\tEMPTY,\n\tBUTTON_CLASS_TYPES,\n\tBUTTON_SIZE_TYPES,\n\tTEXT_BUTTON_CLASS_TYPES,\n\tTEXT_BUTTON_SIZE_TYPES,\n\tOPT_BUTTON_CLASS_TYPES,\n\tOVERFLOW_BUTTON_CLASS_TYPES,\n\tBUTTON_TYPES,\n\tBOTTOM_BUTTON_TYPES,\n\tSPLIT,\n} from './BUTTON';\n// import {\n// \tWHITE_PLUS,\n// \tBLUE_PLUS,\n// \tBLACK_PLUS,\n// \tARROW_RIGHT,\n// \tHEADSET,\n// \tTEL,\n// \tFINANCE,\n// \tPOLICE,\n// \tPRODUCT_DISABLE,\n// \tPRODUCT_ENABLE,\n// } from './SVG';\n\nexport {\n\tEMPTY,\n\tBUTTON_CLASS_TYPES,\n\tBUTTON_SIZE_TYPES,\n\tTEXT_BUTTON_CLASS_TYPES,\n\tTEXT_BUTTON_SIZE_TYPES,\n\tBUTTON_TYPES,\n\tBOTTOM_BUTTON_TYPES,\n\tSPLIT,\n\tOPT_BUTTON_CLASS_TYPES,\n\tOVERFLOW_BUTTON_CLASS_TYPES,\n\t// WHITE_PLUS,\n\t// BLUE_PLUS,\n\t// BLACK_PLUS,\n\t// ARROW_RIGHT,\n\t// HEADSET,\n\t// TEL,\n\t// FINANCE,\n\t// POLICE,\n\t// PRODUCT_DISABLE,\n\t// PRODUCT_ENABLE,\n};\n"
+        }
+    ]
+}

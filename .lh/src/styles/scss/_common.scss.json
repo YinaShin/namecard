@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/styles/scss/_common.scss",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1693921045933,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1693921058876,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,8 @@\n \t--t6-font-size: 14px;\n \t--t7-font-size: 13px;\n \t--t8-font-size: 12px;\n \t--t9-font-size: 11px;\n-\t--t10-font-size: 10px; // 디자인 공통에서 사라짐\n \n \t--t1-line-height: 36px;\n \t--t2-line-height: 32px;\n \t--t3-line-height: 32px;\n@@ -22,6 +21,5 @@\n \t--t6-1-line-height: 20px;\n \t--t7-line-height: 20px;\n \t--t8-line-height: 18px;\n \t--t9-line-height: 16px;\n-\t--t10-line-height: 15px; // 디자인 공통에서 사라짐\n }\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1693921045933,
+            "name": "Commit-0",
+            "content": "@import './_variables';\n@import './_mixins';\n\nhtml {\n\t--t1-font-size: 24px;\n\t--t2-font-size: 22px;\n\t--t3-font-size: 20px;\n\t--t4-font-size: 18px;\n\t--t5-font-size: 16px;\n\t--t6-font-size: 14px;\n\t--t7-font-size: 13px;\n\t--t8-font-size: 12px;\n\t--t9-font-size: 11px;\n\t--t10-font-size: 10px; // 디자인 공통에서 사라짐\n\n\t--t1-line-height: 36px;\n\t--t2-line-height: 32px;\n\t--t3-line-height: 32px;\n\t--t4-line-height: 28px;\n\t--t5-line-height: 24px;\n\t--t6-line-height: 24px;\n\t--t6-1-line-height: 20px;\n\t--t7-line-height: 20px;\n\t--t8-line-height: 18px;\n\t--t9-line-height: 16px;\n\t--t10-line-height: 15px; // 디자인 공통에서 사라짐\n}"
+        }
+    ]
+}

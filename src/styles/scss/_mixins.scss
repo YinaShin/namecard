@@ -1,0 +1,70 @@
+// Typography
+@mixin text24 {
+	font-size: var(--t1-font-size);
+	letter-spacing: -0.5px;
+	line-height: var(--t1-line-height);
+	@content;
+}
+
+@mixin text22 {
+	font-size: var(--t2-font-size);
+	letter-spacing: -0.5px;
+	line-height: var(--t2-line-height);
+	@content;
+}
+
+@mixin text20 {
+	font-size: var(--t3-font-size);
+	letter-spacing: -0.5px;
+	line-height: var(--t3-line-height);
+	@content;
+}
+
+@mixin text18 {
+	font-size: var(--t4-font-size);
+	letter-spacing: -0.5px;
+	line-height: var(--t4-line-height);
+	@content;
+}
+
+@mixin text16 {
+	font-size: var(--t5-font-size);
+	letter-spacing: -0.5px;
+	line-height: var(--t5-line-height);
+	@content;
+}
+
+@mixin text14 {
+	font-size: var(--t6-font-size);
+	letter-spacing: -0.5px;
+	line-height: var(--t6-line-height);
+	@content;
+}
+
+@mixin text14-1 {
+	font-size: var(--t6-font-size);
+	letter-spacing: -0.5px;
+	line-height: var(--t6-1-line-height);
+	@content;
+}
+
+@mixin text13 {
+	font-size: var(--t7-font-size);
+	letter-spacing: -0.5px;
+	line-height: var(--t7-line-height);
+	@content;
+}
+
+@mixin text12 {
+	font-size: var(--t8-font-size);
+	letter-spacing: -0.5px;
+	line-height: var(--t8-line-height);
+	@content;
+}
+
+@mixin text11 {
+	font-size: var(--t9-font-size);
+	letter-spacing: -0.5px;
+	line-height: var(--t9-line-height);
+	@content;
+}
