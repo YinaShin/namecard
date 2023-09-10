@@ -14,12 +14,14 @@
 		height: 32px;
 
 		&.icon-header-back {
+			margin-left: -10px;
 			flex: 0 0 auto;
 			background: url(../styles/assets/images/icon/icon-header-back.svg) no-repeat 4px
 				center/32px 32px;
 		}
 
 		&.icon-header-menu {
+			margin-right:-4px;
 			background: url(../styles/assets/images/icon/icon-header-menu.svg) no-repeat center
 				center/32px 32px;
 		}
@@ -38,7 +40,7 @@
 .header-left {
     display:flex;
     align-items: center;
-    margin-left:12px;
+    margin-left:20px;
     button {
         + h1 {
             margin-left:8px;
@@ -53,5 +55,5 @@
 .header-right {
 	display:flex;
     align-items: center;
-    margin-left:12px;
+    margin-right:20px;
 }

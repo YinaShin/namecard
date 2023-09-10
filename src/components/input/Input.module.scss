@@ -1,0 +1,302 @@
+@import '../../styles/scss/_variables';
+@import '../../styles/scss/_mixins';
+
+$inputLineColor: $greyscale300; // 라인형 border color
+$inputBoxDisableBg: $greyscale200; // 박스형 disable bg color
+$inputDisableColor: $greyscale400; // disable font color
+$inputReadonlyColor: $greyscale600; // readonly font color
+$inputErrorColor: $negativeRed; // error color
+$inputFocusColor: $primary100; // focus color
+$inputLabelColor: $greyscale900; // label color
+$inputPlaceHolderColor: $greyscale500; // 플레이스 홀더 컬러
+$inputBoxHeight: 54px; // 박스형 인풋 높이 (디자인 56px에서 상/하단 border 2px 뺀 값)
+
+// 인풋 기본 스타일 mixin
+@mixin input-default {
+	display: flex;
+	align-items: center;
+	transition: color 200ms ease-in-out, background-color 200ms ease-in-out, border-color 200ms ease-in-out, z-index 200ms step-end;
+	will-change: color, background-color, border-color;
+
+	.buttons {
+		flex: 0 0 auto;
+		line-height: 1;
+		transition: margin 100ms step-end;
+		will-change: margin;
+	}
+
+	input,
+	textarea,
+	.text-area-hidden {
+		@include text16;
+
+		width: 100%;
+		box-sizing: border-box;
+		padding: 0;
+		border: none;
+		background: none;
+		font-weight: 300;
+
+		&:disabled {
+			color: $inputDisableColor;
+		}
+
+		&[readonly] {
+			color: $inputReadonlyColor;
+		}
+
+		&[type="password"] {
+			font-family: Verdana, sans-serif !important;
+			font-size: 29px;
+
+			&::placeholder {
+				@include text16;
+
+				font-family: NotoSansKR !important;
+			}
+
+			&:placeholder-shown {
+				@include text14;
+			}
+		}
+
+		&::placeholder {
+			color: $inputPlaceHolderColor;
+		}
+	}
+
+	textarea {
+		resize: none;
+	}
+
+	.text-area-hidden {
+		white-space: pre;
+	}
+
+	&:focus-within {
+		border-color: $inputFocusColor;
+		transition: color 200ms ease-in-out, background-color 200ms ease-in-out, border-color 200ms ease-in-out, z-index 200ms step-start;
+
+		.buttons {
+			transition: margin 100ms step-start;
+		}
+
+		.reset-button {
+			width: 24px;
+			opacity: 1;
+			transition: opacity 100ms ease-in-out, width 100ms step-start, margin 100ms step-start;
+		}
+	}
+
+	.reset-button {
+		width: 0;
+		height: 24px;
+		margin: 0;
+		background: url('../../styles/assets/images/icon/icon-textfield-reset.svg') no-repeat;
+		opacity: 0;
+		transition: opacity 100ms ease-in-out, width 100ms step-end, margin 100ms step-end;
+		will-change: opacity, width, margin;
+	}
+
+	&.input-disabled-wrap {
+		.unit {
+			color: $inputDisableColor;
+		}
+	}
+
+	&.input-readonly-wrap {
+		.unit {
+			color: $inputReadonlyColor;
+		}
+	}
+
+	@at-root {
+		label:not(:global(.hidden)),
+		span.normal {
+			@include text14 {
+				color: $inputLabelColor;
+				font-weight: 500;
+			}
+			display:block;
+			text-align:left;
+			+ div {
+				margin-top: 8px;
+			}
+		}
+	}
+}
+
+// 인풋 박스형 스타일 mixin
+@mixin input-box {
+	@include input-default;
+
+	border: 1px solid $inputLineColor;
+	border-radius: 8px;
+
+	& > .buttons {
+		margin-left: 16px;
+	}
+
+	input,
+	textarea,
+	.text-area-hidden {
+		padding: 15px 16px;
+		padding-right: 0;
+		border-radius: 8px;
+
+		&[type="password"] {
+			height: $inputBoxHeight;
+			padding: 13px 16px 17px;
+			padding-right: 0;
+
+			&:placeholder-shown {
+				padding: 15px 16px;
+			}
+		}
+	}
+
+	textarea {
+		height: 54px;
+	}
+
+	.text-area-hidden {
+		min-height: 54px;
+	}
+
+	.reset-button ~ .search,
+	.reset-button ~ .certification-button,
+	.reset-button ~ .time-limit {
+		margin-left: -8px;
+	}
+
+	&:focus-within .reset-button,
+	.search,
+	button[class*="arrow-"] {
+		margin-right: 16px;
+	}
+
+	&:focus-within {
+		.buttons {
+			margin-left: 8px;
+		}
+	}
+
+	& + .message {
+		margin-left: 12px;
+	}
+
+	&.input-disabled-wrap,
+	&.input-readonly-wrap {
+		.input-wrap,
+		textarea {
+			background: $inputBoxDisableBg;
+		}
+	}
+}
+
+.wrap {
+	margin-top: var(--spacing);
+
+	&.input-disabled-wrap,
+	&.input-readonly-wrap {
+		.input-wrap {
+			background: $inputBoxDisableBg;
+		}
+	}
+	
+	&.input-error-wrap .input-wrap {
+		border-color: $inputErrorColor;
+		& + .message {
+			color: $inputErrorColor;
+		}
+	}
+
+	.input-wrap {
+		@include input-box;
+	}
+}
+
+.text-area-wrap {
+	margin-top: var(--spacing);
+	@include input-box;
+
+	position: relative;
+	z-index: 1;
+	flex-direction: column;
+	align-items: flex-start;
+	border: none;
+
+	.text-area-content {
+		position: relative;
+		z-index: 1;
+		width: 100%;
+		flex: 1;
+
+		textarea {
+			@include text14 {
+				color: $greyscale900;
+			}
+
+			width: 100%;
+			min-height: calc(var(--min-height) - 16px - 40px - 2px);
+			padding: 16px 16px 40px;
+			border: 1px solid $inputLineColor;
+			border-radius: 8px;
+			resize: none;
+
+			&.auto {
+				min-height: calc(24px * var(--default-line));
+			}
+
+			&:focus {
+				border-color: $inputFocusColor;
+			}
+		}
+
+		.reset-button {
+			position: absolute;
+			z-index: 10;
+			right: 16px;
+			bottom: 16px;
+			margin: 0;
+
+			&.hidden {
+				position: absolute;
+				top: 2000px;
+				left: 220000px;
+			}
+		}
+	}
+
+	.text-length {
+		@include text12 {
+			color: $greyscale600;
+		}
+
+		width:100%;
+		margin-top: 4px;
+		text-align: right;
+		
+		.current-length {
+			color: $primary100;
+		}
+	}
+
+	& + [class*="message"] {
+		padding-right: 50px;
+		margin-top: -22px;
+		color: $inputFocusColor;
+	}
+
+	@at-root {
+		.input-error-wrap & {
+			.text-area-content textarea {
+				border-color: $inputErrorColor;
+			}
+
+			& + [class*="message"] {
+				color: $inputErrorColor;
+			}
+		}
+	}
+}

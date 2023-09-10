@@ -1,0 +1,70 @@
+{
+    "sourceFile": "src/components/input/TextAreaBox.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 13,
+            "patches": [
+                {
+                    "date": 1694367460590,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1694367483232,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,26 +18,8 @@\n }) => {\n \tconst cx = classNames.bind(InputStyle);\n \tconst inputRef = useRef();\n \n-\tconst autoResizeTextarea = () => {\n-\t\tconst textArea = document.querySelector('[class*=\"text-area-content\"] textarea');\n-\n-\t\tif (textArea) {\n-\t\t\ttextArea.style.height = 'auto';\n-\t\t\tconst initialHeight = 24 * defaultLine;\n-\t\t\tconst height = textArea.scrollHeight;\n-\n-\t\t\tif (height > initialHeight) {\n-\t\t\t\ttextArea.style.height = `${height}px`;\n-\t\t\t}\n-\t\t}\n-\t};\n-\n-\tuseEffect(() => {\n-\t\tif (auto) autoResizeTextarea();\n-\t}, [value]);\n-\n \treturn (\n \t\t<div className={cx('text-area-wrap')}>\n \t\t\t<div className={cx('text-area-content')}>\n \t\t\t\t<textarea\n"
+                },
+                {
+                    "date": 1694367495344,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-import { useEffect, useRef } from 'react';\n+import { useRef } from 'react';\n import PropTypes from 'prop-types';\n import classNames from 'classnames/bind';\n import InputStyle from '../Input.module.scss';\n \n"
+                },
+                {
+                    "date": 1694367504024,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,8 @@\n \n const TextAreaBox = ({\n \tid,\n \tvalue,\n-\tsetValue,\n \tplaceholder,\n \tonChange,\n \tdisabled,\n \treadonly,\n"
+                },
+                {
+                    "date": 1694367510344,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -49,9 +49,8 @@\n \n TextAreaBox.propTypes = {\n \tid: PropTypes.string,\n \tvalue: PropTypes.string,\n-\tsetValue: PropTypes.func,\n \tmaxLength: PropTypes.number,\n \tplaceholder: PropTypes.string,\n \tonChange: PropTypes.func,\n \tdisabled: PropTypes.bool,\n"
+                },
+                {
+                    "date": 1694367596574,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import { useRef } from 'react';\n import PropTypes from 'prop-types';\n import classNames from 'classnames/bind';\n-import InputStyle from '../Input.module.scss';\n+import InputStyle from './InputBase.module.scss';\n \n const TextAreaBox = ({\n \tid,\n \tvalue,\n"
+                },
+                {
+                    "date": 1694367609602,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import { useRef } from 'react';\n import PropTypes from 'prop-types';\n import classNames from 'classnames/bind';\n-import InputStyle from './InputBase.module.scss';\n+import InputStyle from './Inpu.module.scss';\n \n const TextAreaBox = ({\n \tid,\n \tvalue,\n"
+                },
+                {
+                    "date": 1694367748763,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import { useRef } from 'react';\n import PropTypes from 'prop-types';\n import classNames from 'classnames/bind';\n-import InputStyle from './Inpu.module.scss';\n+import InputStyle from './Input.module.scss';\n \n const TextAreaBox = ({\n \tid,\n \tvalue,\n"
+                },
+                {
+                    "date": 1694367919905,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,14 +13,20 @@\n \tmaxLength = 100,\n \tminHeight = 152,\n \tdefaultLine = 2,\n \tauto,\n+    isLabel = false,\n+\tlabelText,\n+    spacing = '0'\n }) => {\n \tconst cx = classNames.bind(InputStyle);\n \tconst inputRef = useRef();\n \n \treturn (\n-\t\t<div className={cx('text-area-wrap')}>\n+\t\t<div className={cx('text-area-wrap')} style={{ '--spacing': `${spacing}px` }}>\n+            {isLabel && labelText && (\n+\t\t\t\t<label htmlFor={id}>{labelText}</label>\n+\t\t\t)}\n \t\t\t<div className={cx('text-area-content')}>\n \t\t\t\t<textarea\n \t\t\t\t\tclassName={cx({ auto })}\n \t\t\t\t\tstyle={{\n@@ -57,6 +63,9 @@\n \treadonly: PropTypes.bool,\n \tminHeight: PropTypes.number,\n \tdefaultLine: PropTypes.number,\n \tauto: PropTypes.bool,\n+    isLabel: PropTypes.bool,\n+\tlabelText: PropTypes.string,\n+    spacing: PropTypes.string,\n };\n export default TextAreaBox;\n"
+                },
+                {
+                    "date": 1694368303183,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n \tid,\n \tvalue,\n \tplaceholder,\n \tonChange,\n-\tdisabled,\n+\tdisabled = {true},\n \treadonly,\n \tmaxLength = 100,\n \tminHeight = 152,\n \tdefaultLine = 2,\n"
+                },
+                {
+                    "date": 1694368309459,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n \tid,\n \tvalue,\n \tplaceholder,\n \tonChange,\n-\tdisabled = {true},\n+\tdisabled = true,\n \treadonly,\n \tmaxLength = 100,\n \tminHeight = 152,\n \tdefaultLine = 2,\n"
+                },
+                {
+                    "date": 1694368416132,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,15 +15,23 @@\n \tdefaultLine = 2,\n \tauto,\n     isLabel = false,\n \tlabelText,\n-    spacing = '0'\n+    spacing = '0',\n+    error,\n }) => {\n \tconst cx = classNames.bind(InputStyle);\n \tconst inputRef = useRef();\n \n \treturn (\n-\t\t<div className={cx('text-area-wrap')} style={{ '--spacing': `${spacing}px` }}>\n+\t\t<div \n+            className={cx('text-area-wrap', {\n+                'input-disabled-wrap': disabled,\n+                'input-readonly-wrap': readonly,\n+                'input-error-wrap': error,\n+            })}\n+            style={{ '--spacing': `${spacing}px` }}\n+        >\n             {isLabel && labelText && (\n \t\t\t\t<label htmlFor={id}>{labelText}</label>\n \t\t\t)}\n \t\t\t<div className={cx('text-area-content')}>\n"
+                },
+                {
+                    "date": 1694368533653,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n \tid,\n \tvalue,\n \tplaceholder,\n \tonChange,\n-\tdisabled = true,\n+\tdisabled,\n \treadonly,\n \tmaxLength = 100,\n \tminHeight = 152,\n \tdefaultLine = 2,\n"
+                },
+                {
+                    "date": 1694369006801,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,8 +17,9 @@\n     isLabel = false,\n \tlabelText,\n     spacing = '0',\n     error,\n+    isTextLengthChecker = false,\n }) => {\n \tconst cx = classNames.bind(InputStyle);\n \tconst inputRef = useRef();\n \n@@ -50,14 +51,16 @@\n \t\t\t\t\tdisabled={disabled}\n \t\t\t\t\treadOnly={readonly}\n \t\t\t\t/>\n \t\t\t</div>\n-\t\t\t<p className={`${InputStyle['text-length']}`}>\n-\t\t\t\t<span className={`${InputStyle['current-length']}`}>\n-\t\t\t\t\t{value ? value.length : 0}자\n-\t\t\t\t</span>\n-\t\t\t\t/{maxLength}자\n-\t\t\t</p>\n+            {isTextLengthChecker && (\n+                <p className={`${InputStyle['text-length']}`}>\n+                    <span className={`${InputStyle['current-length']}`}>\n+                        {value ? value.length : 0}자\n+                    </span>\n+                    /{maxLength}자\n+                </p>\n+            )}\n \t\t</div>\n \t);\n };\n \n@@ -74,6 +77,7 @@\n \tauto: PropTypes.bool,\n     isLabel: PropTypes.bool,\n \tlabelText: PropTypes.string,\n     spacing: PropTypes.string,\n+    isTextLengthChecker: PropTypes.bool,\n };\n export default TextAreaBox;\n"
+                }
+            ],
+            "date": 1694367460590,
+            "name": "Commit-0",
+            "content": "import { useEffect, useRef } from 'react';\nimport PropTypes from 'prop-types';\nimport classNames from 'classnames/bind';\nimport InputStyle from '../Input.module.scss';\n\nconst TextAreaBox = ({\n\tid,\n\tvalue,\n\tsetValue,\n\tplaceholder,\n\tonChange,\n\tdisabled,\n\treadonly,\n\tmaxLength = 100,\n\tminHeight = 152,\n\tdefaultLine = 2,\n\tauto,\n}) => {\n\tconst cx = classNames.bind(InputStyle);\n\tconst inputRef = useRef();\n\n\tconst autoResizeTextarea = () => {\n\t\tconst textArea = document.querySelector('[class*=\"text-area-content\"] textarea');\n\n\t\tif (textArea) {\n\t\t\ttextArea.style.height = 'auto';\n\t\t\tconst initialHeight = 24 * defaultLine;\n\t\t\tconst height = textArea.scrollHeight;\n\n\t\t\tif (height > initialHeight) {\n\t\t\t\ttextArea.style.height = `${height}px`;\n\t\t\t}\n\t\t}\n\t};\n\n\tuseEffect(() => {\n\t\tif (auto) autoResizeTextarea();\n\t}, [value]);\n\n\treturn (\n\t\t<div className={cx('text-area-wrap')}>\n\t\t\t<div className={cx('text-area-content')}>\n\t\t\t\t<textarea\n\t\t\t\t\tclassName={cx({ auto })}\n\t\t\t\t\tstyle={{\n\t\t\t\t\t\t'--min-height': `${minHeight}px`,\n\t\t\t\t\t\t'--default-line': `${defaultLine}`,\n\t\t\t\t\t}}\n\t\t\t\t\tref={inputRef}\n\t\t\t\t\tid={id}\n\t\t\t\t\tvalue={value}\n\t\t\t\t\tmaxLength={maxLength}\n\t\t\t\t\tplaceholder={placeholder}\n\t\t\t\t\tonChange={onChange}\n\t\t\t\t\tdisabled={disabled}\n\t\t\t\t\treadOnly={readonly}\n\t\t\t\t/>\n\t\t\t</div>\n\t\t\t<p className={`${InputStyle['text-length']}`}>\n\t\t\t\t<span className={`${InputStyle['current-length']}`}>\n\t\t\t\t\t{value ? value.length : 0}자\n\t\t\t\t</span>\n\t\t\t\t/{maxLength}자\n\t\t\t</p>\n\t\t</div>\n\t);\n};\n\nTextAreaBox.propTypes = {\n\tid: PropTypes.string,\n\tvalue: PropTypes.string,\n\tsetValue: PropTypes.func,\n\tmaxLength: PropTypes.number,\n\tplaceholder: PropTypes.string,\n\tonChange: PropTypes.func,\n\tdisabled: PropTypes.bool,\n\treadonly: PropTypes.bool,\n\tminHeight: PropTypes.number,\n\tdefaultLine: PropTypes.number,\n\tauto: PropTypes.bool,\n};\nexport default TextAreaBox;\n"
+        }
+    ]
+}

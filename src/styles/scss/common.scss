@@ -29,3 +29,63 @@ body {
 		color: $greyscale900;
 	}
 }
+
+.contents-area {
+	display:flex;
+	flex-direction: column;
+	min-height: calc(100vh - 52px);
+	.container {
+		padding:20px 16px;
+		.fullsize-layout {
+            margin-left: -16px;
+            margin-right: -16px;
+            &:first-child {
+                margin-top: -20px;
+            }
+        }
+	}
+}
+
+.h1 {
+	@include text20{
+		font-weight:500;
+	}
+}
+.h2 {
+	@include text18{
+		font-weight:500;
+	};
+}
+.h3 {
+	@include text16{
+		font-weight:500;
+	};
+}
+
+.button-group {
+	&.sticky-button {
+		overflow-x: hidden;
+		width:100%;
+		margin:40px 0 32px;
+		padding:0 13px;
+	}
+	.button-row {
+		display:flex;
+		> * {
+			flex:1;
+			margin:0 3px;
+		}
+		+ .button-row {
+			margin-top: 6px;
+		}
+	}
+}
+
+/* templist */
+.temp-list {
+	padding:10px;
+	border-bottom: 1px solid $greyscale250;
+	a {
+		padding:0 5px;
+	}
+}

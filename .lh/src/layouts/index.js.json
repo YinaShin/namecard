@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/layouts/index.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1694342205783,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1694342205783,
+            "name": "Commit-0",
+            "content": "import Header from './Header';\nimport PageLayout from './PageLayout';\n\nexport {\n    Header,\n    PageLayout\n}"
+        }
+    ]
+}

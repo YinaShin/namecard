@@ -1,0 +1,122 @@
+{
+    "sourceFile": "src/templates/Sample01.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 26,
+            "patches": [
+                {
+                    "date": 1694360009197,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1694360109215,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,15 +2,9 @@\n \n const Sample01 = ({}) => {\n \t\n \treturn (\n-\t\t<button \n-\t\t\tclassName={`${InputStyle['reset-button']}`} \n-\t\t\tonClick={(evt) => {\n-\t\t\t\tonClick && onClick(evt);}}\n-\t\t\t>\n-\t\t\t<span className=\"hidden\">초기화</span>\n-\t\t</button>\n+\t\t\n \t);\n };\n \n Sample01.propTypes = {\n"
+                },
+                {
+                    "date": 1694361727542,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n \n const Sample01 = ({}) => {\n \t\n \treturn (\n-\t\t\n+\t\t<h1>샘플이에용</h1>\n \t);\n };\n \n Sample01.propTypes = {\n"
+                },
+                {
+                    "date": 1694361855923,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,4 @@\n-import PropTypes from 'prop-types';\n-\n const Sample01 = ({}) => {\n \t\n \treturn (\n \t\t<h1>샘플이에용</h1>\n"
+                },
+                {
+                    "date": 1694361863386,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-const Sample01 = ({}) => {\n+const Sample01 = () => {\n \t\n \treturn (\n \t\t<h1>샘플이에용</h1>\n \t);\n"
+                },
+                {
+                    "date": 1694366114363,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,23 @@\n-const Sample01 = () => {\n-\t\n+import PropTypes from 'prop-types';\n+import classNames from 'classnames/bind';\n+import Sample01 from './Input.module.scss';\n+import { PageLayout, Header } from '../layouts/';\n+\n+const cx = classNames.bind(Sample01);\n+const Sample01 = ({\n+\tid,\n+}) => {\n \treturn (\n-\t\t<h1>샘플이에용</h1>\n+\t\t<PageLayout>\n+\t\t\t<Header menu={true}>\n+\t\t\t\t명함 관리\n+\t\t\t</Header>\n+\t\t</PageLayout>\n \t);\n };\n \n Sample01.propTypes = {\n-\t\n+\tid: PropTypes.string,\n };\n+\n export default Sample01;\n"
+                },
+                {
+                    "date": 1694366167258,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,10 @@\n import PropTypes from 'prop-types';\n import classNames from 'classnames/bind';\n-import Sample01 from './Input.module.scss';\n+import Sample01Style from './sample.module.scss';\n import { PageLayout, Header } from '../layouts/';\n \n-const cx = classNames.bind(Sample01);\n+const cx = classNames.bind(Sample01Style);\n const Sample01 = ({\n \tid,\n }) => {\n \treturn (\n"
+                },
+                {
+                    "date": 1694366181789,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import PropTypes from 'prop-types';\n import classNames from 'classnames/bind';\n-import Sample01Style from './sample.module.scss';\n+import Sample01Style from './Sample01.module.scss';\n import { PageLayout, Header } from '../layouts/';\n \n const cx = classNames.bind(Sample01Style);\n const Sample01 = ({\n"
+                },
+                {
+                    "date": 1694366430794,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,8 +11,13 @@\n \t\t<PageLayout>\n \t\t\t<Header menu={true}>\n \t\t\t\t명함 관리\n \t\t\t</Header>\n+\t\t\t<div className=\"contents-area\">\n+\t\t\t\t<div className={cx(['container', 'sample01'])}>\n+\n+\t\t\t\t</div>\n+\t\t\t</div>\n \t\t</PageLayout>\n \t);\n };\n \n"
+                },
+                {
+                    "date": 1694366558721,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n \t\t\t\t명함 관리\n \t\t\t</Header>\n \t\t\t<div className=\"contents-area\">\n \t\t\t\t<div className={cx(['container', 'sample01'])}>\n-\n+\t\t\t\t\t\n \t\t\t\t</div>\n \t\t\t</div>\n \t\t</PageLayout>\n \t);\n"
+                },
+                {
+                    "date": 1694366587716,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n \t\t\t\t명함 관리\n \t\t\t</Header>\n \t\t\t<div className=\"contents-area\">\n \t\t\t\t<div className={cx(['container', 'sample01'])}>\n-\t\t\t\t\t\n+\t\t\t\t\t<h3 className=\"h3\"></h3>\n \t\t\t\t</div>\n \t\t\t</div>\n \t\t</PageLayout>\n \t);\n"
+                },
+                {
+                    "date": 1694366607235,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n \t\t\t\t명함 관리\n \t\t\t</Header>\n \t\t\t<div className=\"contents-area\">\n \t\t\t\t<div className={cx(['container', 'sample01'])}>\n-\t\t\t\t\t<h3 className=\"h3\"></h3>\n+\t\t\t\t\t<h3 className=\"h3\">필수 정보 관리</h3>\n \t\t\t\t</div>\n \t\t\t</div>\n \t\t</PageLayout>\n \t);\n"
+                },
+                {
+                    "date": 1694366732148,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n \t\t\t\t명함 관리\n \t\t\t</Header>\n \t\t\t<div className=\"contents-area\">\n \t\t\t\t<div className={cx(['container', 'sample01'])}>\n-\t\t\t\t\t<h3 className=\"h3\">필수 정보 관리</h3>\n+\t\t\t\t\t<h3 className=\"h3\">부가 정보 관리</h3>\n \t\t\t\t</div>\n \t\t\t</div>\n \t\t</PageLayout>\n \t);\n"
+                },
+                {
+                    "date": 1694366820642,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n import PropTypes from 'prop-types';\n import classNames from 'classnames/bind';\n import Sample01Style from './Sample01.module.scss';\n import { PageLayout, Header } from '../layouts/';\n+import { InputBase } from '../components/';\n \n const cx = classNames.bind(Sample01Style);\n const Sample01 = ({\n \tid,\n@@ -14,8 +15,14 @@\n \t\t\t</Header>\n \t\t\t<div className=\"contents-area\">\n \t\t\t\t<div className={cx(['container', 'sample01'])}>\n \t\t\t\t\t<h3 className=\"h3\">부가 정보 관리</h3>\n+\t\t\t\t\t<InputBase\n+\t\t\t\t\t\tid={'inputForm01'}\n+\t\t\t\t\t\tisLabel={true}\n+\t\t\t\t\t\tlabelText={'이름'}\n+\t\t\t\t\t\tplaceholder={'이름을 입력해 주세요.'}\n+\t\t\t\t\t/>\n \t\t\t\t</div>\n \t\t\t</div>\n \t\t</PageLayout>\n \t);\n"
+                },
+                {
+                    "date": 1694366835190,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,8 +20,9 @@\n \t\t\t\t\t\tid={'inputForm01'}\n \t\t\t\t\t\tisLabel={true}\n \t\t\t\t\t\tlabelText={'이름'}\n \t\t\t\t\t\tplaceholder={'이름을 입력해 주세요.'}\n+\t\t\t\t\t\tspacing={'16'}\n \t\t\t\t\t/>\n \t\t\t\t</div>\n \t\t\t</div>\n \t\t</PageLayout>\n"
+                },
+                {
+                    "date": 1694366852628,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,10 +18,10 @@\n \t\t\t\t\t<h3 className=\"h3\">부가 정보 관리</h3>\n \t\t\t\t\t<InputBase\n \t\t\t\t\t\tid={'inputForm01'}\n \t\t\t\t\t\tisLabel={true}\n-\t\t\t\t\t\tlabelText={'이름'}\n-\t\t\t\t\t\tplaceholder={'이름을 입력해 주세요.'}\n+\t\t\t\t\t\tlabelText={'직급'}\n+\t\t\t\t\t\tplaceholder={'직급을 입력해 주세요.'}\n \t\t\t\t\t\tspacing={'16'}\n \t\t\t\t\t/>\n \t\t\t\t</div>\n \t\t\t</div>\n"
+                },
+                {
+                    "date": 1694366924727,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,8 +22,23 @@\n \t\t\t\t\t\tlabelText={'직급'}\n \t\t\t\t\t\tplaceholder={'직급을 입력해 주세요.'}\n \t\t\t\t\t\tspacing={'16'}\n \t\t\t\t\t/>\n+\t\t\t\t\t<InputBase\n+\t\t\t\t\t\tid={'inputForm02'}\n+\t\t\t\t\t\tisLabel={true}\n+\t\t\t\t\t\tlabelText={'부서'}\n+\t\t\t\t\t\tplaceholder={'부서를 입력해 주세요.'}\n+\t\t\t\t\t\tspacing={'20'}\n+\t\t\t\t\t/>\n+\t\t\t\t\t<InputBase\n+\t\t\t\t\t\ttype={'number'}\n+\t\t\t\t\t\tid={'inputForm03'}\n+\t\t\t\t\t\tisLabel={true}\n+\t\t\t\t\t\tlabelText={'부서'}\n+\t\t\t\t\t\tplaceholder={'부서를 입력해 주세요.'}\n+\t\t\t\t\t\tspacing={'20'}\n+\t\t\t\t\t/>\n \t\t\t\t</div>\n \t\t\t</div>\n \t\t</PageLayout>\n \t);\n"
+                },
+                {
+                    "date": 1694366978366,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,12 +33,20 @@\n \t\t\t\t\t<InputBase\n \t\t\t\t\t\ttype={'number'}\n \t\t\t\t\t\tid={'inputForm03'}\n \t\t\t\t\t\tisLabel={true}\n-\t\t\t\t\t\tlabelText={'부서'}\n-\t\t\t\t\t\tplaceholder={'부서를 입력해 주세요.'}\n+\t\t\t\t\t\tlabelText={'핸드폰번호'}\n+\t\t\t\t\t\tplaceholder={'핸드폰번호를 입력해 주세요.'}\n \t\t\t\t\t\tspacing={'20'}\n \t\t\t\t\t/>\n+\t\t\t\t\t<InputBase\n+\t\t\t\t\t\ttype={'number'}\n+\t\t\t\t\t\tid={'inputForm04'}\n+\t\t\t\t\t\tisLabel={true}\n+\t\t\t\t\t\tlabelText={'회사번호'}\n+\t\t\t\t\t\tplaceholder={'회사번호를 입력해 주세요.'}\n+\t\t\t\t\t\tspacing={'20'}\n+\t\t\t\t\t/>\n \t\t\t\t</div>\n \t\t\t</div>\n \t\t</PageLayout>\n \t);\n"
+                },
+                {
+                    "date": 1694367091664,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -45,8 +45,32 @@\n \t\t\t\t\t\tlabelText={'회사번호'}\n \t\t\t\t\t\tplaceholder={'회사번호를 입력해 주세요.'}\n \t\t\t\t\t\tspacing={'20'}\n \t\t\t\t\t/>\n+\t\t\t\t\t<InputBase\n+\t\t\t\t\t\ttype={'number'}\n+\t\t\t\t\t\tid={'inputForm05'}\n+\t\t\t\t\t\tisLabel={true}\n+\t\t\t\t\t\tlabelText={'팩스번호'}\n+\t\t\t\t\t\tplaceholder={'팩스번호를 입력해 주세요.'}\n+\t\t\t\t\t\tspacing={'20'}\n+\t\t\t\t\t/>\n+\t\t\t\t\t<InputBase\n+\t\t\t\t\t\ttype={'number'}\n+\t\t\t\t\t\tid={'inputForm06'}\n+\t\t\t\t\t\tisLabel={true}\n+\t\t\t\t\t\tlabelText={'주소'}\n+\t\t\t\t\t\tplaceholder={'주소를 입력해 주세요.'}\n+\t\t\t\t\t\tspacing={'20'}\n+\t\t\t\t\t/>\n+\t\t\t\t\t<InputBase\n+\t\t\t\t\t\ttype={'number'}\n+\t\t\t\t\t\tid={'inputForm07'}\n+\t\t\t\t\t\tisLabel={true}\n+\t\t\t\t\t\tlabelText={'홈페이지'}\n+\t\t\t\t\t\tplaceholder={'홈페이지 주소를 입력해 주세요.'}\n+\t\t\t\t\t\tspacing={'20'}\n+\t\t\t\t\t/>\n \t\t\t\t</div>\n \t\t\t</div>\n \t\t</PageLayout>\n \t);\n"
+                },
+                {
+                    "date": 1694367800139,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -69,8 +69,9 @@\n \t\t\t\t\t\tlabelText={'홈페이지'}\n \t\t\t\t\t\tplaceholder={'홈페이지 주소를 입력해 주세요.'}\n \t\t\t\t\t\tspacing={'20'}\n \t\t\t\t\t/>\n+\t\t\t\t\t\n \t\t\t\t</div>\n \t\t\t</div>\n \t\t</PageLayout>\n \t);\n"
+                },
+                {
+                    "date": 1694367973420,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import PropTypes from 'prop-types';\n import classNames from 'classnames/bind';\n import Sample01Style from './Sample01.module.scss';\n import { PageLayout, Header } from '../layouts/';\n-import { InputBase } from '../components/';\n+import { InputBase, TextAreaBox } from '../components/';\n \n const cx = classNames.bind(Sample01Style);\n const Sample01 = ({\n \tid,\n@@ -69,9 +69,16 @@\n \t\t\t\t\t\tlabelText={'홈페이지'}\n \t\t\t\t\t\tplaceholder={'홈페이지 주소를 입력해 주세요.'}\n \t\t\t\t\t\tspacing={'20'}\n \t\t\t\t\t/>\n-\t\t\t\t\t\n+\t\t\t\t\t<TextAreaBox\n+\t\t\t\t\t\ttype={'number'}\n+\t\t\t\t\t\tid={'inputForm07'}\n+\t\t\t\t\t\tisLabel={true}\n+\t\t\t\t\t\tlabelText={'홈페이지'}\n+\t\t\t\t\t\tplaceholder={'홈페이지 주소를 입력해 주세요.'}\n+\t\t\t\t\t\tspacing={'20'}\n+\t\t\t\t\t/>\n \t\t\t\t</div>\n \t\t\t</div>\n \t\t</PageLayout>\n \t);\n"
+                },
+                {
+                    "date": 1694368899500,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -54,31 +54,35 @@\n \t\t\t\t\t\tplaceholder={'팩스번호를 입력해 주세요.'}\n \t\t\t\t\t\tspacing={'20'}\n \t\t\t\t\t/>\n \t\t\t\t\t<InputBase\n-\t\t\t\t\t\ttype={'number'}\n \t\t\t\t\t\tid={'inputForm06'}\n \t\t\t\t\t\tisLabel={true}\n \t\t\t\t\t\tlabelText={'주소'}\n \t\t\t\t\t\tplaceholder={'주소를 입력해 주세요.'}\n \t\t\t\t\t\tspacing={'20'}\n \t\t\t\t\t/>\n \t\t\t\t\t<InputBase\n-\t\t\t\t\t\ttype={'number'}\n \t\t\t\t\t\tid={'inputForm07'}\n \t\t\t\t\t\tisLabel={true}\n \t\t\t\t\t\tlabelText={'홈페이지'}\n \t\t\t\t\t\tplaceholder={'홈페이지 주소를 입력해 주세요.'}\n \t\t\t\t\t\tspacing={'20'}\n \t\t\t\t\t/>\n \t\t\t\t\t<TextAreaBox\n-\t\t\t\t\t\ttype={'number'}\n-\t\t\t\t\t\tid={'inputForm07'}\n+\t\t\t\t\t\tid={'inputForm08'}\n \t\t\t\t\t\tisLabel={true}\n-\t\t\t\t\t\tlabelText={'홈페이지'}\n-\t\t\t\t\t\tplaceholder={'홈페이지 주소를 입력해 주세요.'}\n+\t\t\t\t\t\tlabelText={'인사말'}\n+\t\t\t\t\t\tplaceholder={'인사말을 입력해 주세요.'}\n \t\t\t\t\t\tspacing={'20'}\n \t\t\t\t\t/>\n+\t\t\t\t\t<TextAreaBox\n+\t\t\t\t\t\tid={'inputForm09'}\n+\t\t\t\t\t\tisLabel={true}\n+\t\t\t\t\t\tlabelText={'사업 소개'}\n+\t\t\t\t\t\tplaceholder={'사업 소개를 입력해 주세요.'}\n+\t\t\t\t\t\tspacing={'20'}\n+\t\t\t\t\t/>\n \t\t\t\t</div>\n \t\t\t</div>\n \t\t</PageLayout>\n \t);\n"
+                },
+                {
+                    "date": 1694369406440,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -79,9 +79,9 @@\n \t\t\t\t\t\tid={'inputForm09'}\n \t\t\t\t\t\tisLabel={true}\n \t\t\t\t\t\tlabelText={'사업 소개'}\n \t\t\t\t\t\tplaceholder={'사업 소개를 입력해 주세요.'}\n-\t\t\t\t\t\tspacing={'20'}\n+\t\t\t\t\t\tspacing={'14'}\n \t\t\t\t\t/>\n \t\t\t\t</div>\n \t\t\t</div>\n \t\t</PageLayout>\n"
+                },
+                {
+                    "date": 1694369486307,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import PropTypes from 'prop-types';\n import classNames from 'classnames/bind';\n import Sample01Style from './Sample01.module.scss';\n import { PageLayout, Header } from '../layouts/';\n-import { InputBase, TextAreaBox } from '../components/';\n+import { InputBase, TextAreaBox, Button } from '../components/';\n \n const cx = classNames.bind(Sample01Style);\n const Sample01 = ({\n \tid,\n@@ -82,8 +82,16 @@\n \t\t\t\t\t\tplaceholder={'사업 소개를 입력해 주세요.'}\n \t\t\t\t\t\tspacing={'14'}\n \t\t\t\t\t/>\n \t\t\t\t</div>\n+\t\t\t\t<div className=\"sticky-button button-group\">\n+\t\t\t\t\t<div className='button-row'>\n+\n+\t\t\t\t\t</div>\n+\t\t\t\t\t<div className='button-row'>\n+\n+\t\t\t\t\t</div>\n+\t\t\t\t</div>\n \t\t\t</div>\n \t\t</PageLayout>\n \t);\n };\n"
+                },
+                {
+                    "date": 1694369531590,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -84,9 +84,9 @@\n \t\t\t\t\t/>\n \t\t\t\t</div>\n \t\t\t\t<div className=\"sticky-button button-group\">\n \t\t\t\t\t<div className='button-row'>\n-\n+\t\t\t\t\t\t<Button uiType={'secondary-2nd'} buttonSize={'large'}>버튼</Button>\n \t\t\t\t\t</div>\n \t\t\t\t\t<div className='button-row'>\n \n \t\t\t\t\t</div>\n"
+                },
+                {
+                    "date": 1694369576257,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -87,9 +87,10 @@\n \t\t\t\t\t<div className='button-row'>\n \t\t\t\t\t\t<Button uiType={'secondary-2nd'} buttonSize={'large'}>버튼</Button>\n \t\t\t\t\t</div>\n \t\t\t\t\t<div className='button-row'>\n-\n+\t\t\t\t\t\t<Button uiType={'secondary-3rd'} buttonSize={'large'}>버튼</Button>\n+\t\t\t\t\t\t<Button uiType={'primary'} buttonSize={'large'}>버튼</Button>\n \t\t\t\t\t</div>\n \t\t\t\t</div>\n \t\t\t</div>\n \t\t</PageLayout>\n"
+                },
+                {
+                    "date": 1694369600892,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -84,13 +84,13 @@\n \t\t\t\t\t/>\n \t\t\t\t</div>\n \t\t\t\t<div className=\"sticky-button button-group\">\n \t\t\t\t\t<div className='button-row'>\n-\t\t\t\t\t\t<Button uiType={'secondary-2nd'} buttonSize={'large'}>버튼</Button>\n+\t\t\t\t\t\t<Button uiType={'secondary-2nd'} buttonSize={'large'}>미리보기</Button>\n \t\t\t\t\t</div>\n \t\t\t\t\t<div className='button-row'>\n-\t\t\t\t\t\t<Button uiType={'secondary-3rd'} buttonSize={'large'}>버튼</Button>\n-\t\t\t\t\t\t<Button uiType={'primary'} buttonSize={'large'}>버튼</Button>\n+\t\t\t\t\t\t<Button uiType={'secondary-3rd'} buttonSize={'large'}>취소</Button>\n+\t\t\t\t\t\t<Button uiType={'primary'} buttonSize={'large'}>확인</Button>\n \t\t\t\t\t</div>\n \t\t\t\t</div>\n \t\t\t</div>\n \t\t</PageLayout>\n"
+                }
+            ],
+            "date": 1694360009197,
+            "name": "Commit-0",
+            "content": "import PropTypes from 'prop-types';\n\nconst Sample01 = ({}) => {\n\t\n\treturn (\n\t\t<button \n\t\t\tclassName={`${InputStyle['reset-button']}`} \n\t\t\tonClick={(evt) => {\n\t\t\t\tonClick && onClick(evt);}}\n\t\t\t>\n\t\t\t<span className=\"hidden\">초기화</span>\n\t\t</button>\n\t);\n};\n\nSample01.propTypes = {\n\t\n};\nexport default Sample01;\n"
+        }
+    ]
+}

@@ -13,6 +13,7 @@ export const BUTTON_SIZE_TYPES = {
 	X_LARGE: 'x-large',
 	LARGE: 'large',
 	MEDIUM: 'medium',
+	MEDIUM02: 'medium02',
 	SMALL: 'small',
 	X_SMALL: 'x-small',
 };

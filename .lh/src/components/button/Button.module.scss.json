@@ -1,0 +1,98 @@
+{
+    "sourceFile": "src/components/button/Button.module.scss",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 20,
+            "patches": [
+                {
+                    "date": 1694329864081,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1694329900017,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n-@import '@styles/scss/_variables';\n-@import '@styles/scss/_mixins';\n+@import './_variables';\n+@import './_mixins';\n \n .button-default {\n \tdisplay: inline-flex;\n \talign-items: center;\n"
+                },
+                {
+                    "date": 1694329932917,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n-@import './_variables';\n-@import './_mixins';\n+@import '../styles/scss/_variables';\n+@import '../styles/scss/_mixins';\n \n .button-default {\n \tdisplay: inline-flex;\n \talign-items: center;\n"
+                },
+                {
+                    "date": 1694330038234,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n-@import '../styles/scss/_variables';\n-@import '../styles/scss/_mixins';\n+@import '/styles/scss/_variables';\n+@import '/styles/scss/_mixins';\n \n .button-default {\n \tdisplay: inline-flex;\n \talign-items: center;\n"
+                },
+                {
+                    "date": 1694330066310,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,152 +1,3 @@\n @import '/styles/scss/_variables';\n @import '/styles/scss/_mixins';\n \n-.button-default {\n-\tdisplay: inline-flex;\n-\talign-items: center;\n-\tjustify-content: center;\n-\tborder: 1px solid transparent;\n-\tmargin-top: var(--spacing);\n-\tborder-radius: 6px;\n-\tvertical-align: middle;\n-\n-\t&.x-large {\n-\t\t@include text18;\n-\n-\t\t// TODO: ripple 효과\n-\t\t// position: relative;\n-\t\t// z-index: 1;\n-\t\t// overflow: hidden;\n-\t\tpadding: 13px 12px;\n-\n-\t\t&.button-icon {\n-\t\t\tpadding: 15px;\n-\t\t}\n-\t}\n-\n-\t&.large {\n-\t\t@include text14;\n-\n-\t\tmin-width: 80px;\n-\t\tpadding: 11px 12px;\n-\t\ttext-align: center;\n-\n-\t\t&.button-icon {\n-\t\t\tmin-width: unset;\n-\t\t\tpadding: 11px;\n-\t\t}\n-\t}\n-\n-\t&.medium {\n-\t\t@include text14;\n-\n-\t\tpadding: 7px 10px 7px 9px;\n-\t}\n-\n-\t&.small {\n-\t\t@include text11;\n-\n-\t\tpadding: 3px 8px 3px 7px;\n-\t}\n-\n-\t&.primary {\n-\t\tbackground: $primary800;\n-\t\tcolor: $white;\n-\n-\t\t&:active {\n-\t\t\tbackground: $primary900;\n-\t\t}\n-\n-\t\t&:disabled {\n-\t\t\tbackground: $greyscale200;\n-\t\t\tcolor: $greyscale400;\n-\t\t\tpointer-events: none;\n-\t\t}\n-\n-\t\t// TODO: ripple 효과\n-\t\t// &::after {\n-\t\t// \tposition: absolute;\n-\t\t// \ttop: var(--effectTop);\n-\t\t// \tleft: var(--effectLeft);\n-\t\t// \tz-index: 1;\n-\t\t// \tcontent: '';\n-\t\t// \twidth: 1px;\n-\t\t// \theight: 1px;\n-\t\t// \tborder-radius: 100%;\n-\t\t// \tbackground: rgba(0, 0, 0, 0.4);\n-\t\t// }\n-\t\t// &.active {\n-\t\t// \tpointer-events: none;\n-\t\t// \t&::after {\n-\t\t// \t\tanimation: effect 0.5s ease-in;\n-\t\t// \t}\n-\t\t// }\n-\t}\n-\n-\t&.secondary-2nd {\n-\t\tborder-color: $primary700;\n-\t\tbackground: $white;\n-\t\tcolor: $primary800;\n-\n-\t\t&:active {\n-\t\t\tbackground: $primary200;\n-\t\t\tcolor: $primary900;\n-\t\t}\n-\n-\t\t&:disabled {\n-\t\t\tborder-color: $greyscale100;\n-\t\t\tbackground: $greyscale100;\n-\t\t\tcolor: $greyscale400;\n-\t\t\tpointer-events: none;\n-\t\t}\n-\t}\n-\n-\t&.secondary-3rd {\n-\t\tborder-color: $greyscale300;\n-\t\tbackground: $white;\n-\t\tcolor: $greyscale900;\n-\n-\t\t&:active {\n-\t\t\tborder-color: $greyscale400;\n-\t\t\tbackground: $greyscale300;\n-\t\t\tcolor: $greyscale900;\n-\t\t}\n-\n-\t\t&:disabled {\n-\t\t\tborder-color: transparent;\n-\t\t\tbackground: $greyscale100;\n-\t\t\tcolor: $greyscale400;\n-\t\t\tpointer-events: none;\n-\t\t}\n-\t}\n-\n-\t&.secondary-4th {\n-\t\tbackground: $greyscale200;\n-\t\tcolor: $greyscale900;\n-\n-\t\t&:active {\n-\t\t\tbackground: $greyscale300;\n-\t\t}\n-\n-\t\t&:disabled {\n-\t\t\tbackground: $greyscale100;\n-\t\t\tcolor: $greyscale400;\n-\t\t\tpointer-events: none;\n-\t\t}\n-\t}\n-}\n-\n-// TODO: ripple 효과\n-// @keyframes effect {\n-// \t0% {\n-// \t\ttransform: scale(0, 0);\n-// \t\topacity: 1;\n-// \t}\n-// \t40% {\n-// \t\topacity: 1;\n-// \t}\n-// \t100% {\n-// \t\topacity: 0;\n-// \t\ttransform: scale(1000, 1000);\n-// \t}\n-// }\n"
+                },
+                {
+                    "date": 1694330121801,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,3 @@\n-@import '/styles/scss/_variables';\n-@import '/styles/scss/_mixins';\n+@import '../../styles/scss/_variables';\n+@import '../../styles/scss/_mixins';\n \n"
+                },
+                {
+                    "date": 1694330150668,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,152 @@\n @import '../../styles/scss/_variables';\n @import '../../styles/scss/_mixins';\n \n+.button-default {\n+\tdisplay: inline-flex;\n+\talign-items: center;\n+\tjustify-content: center;\n+\tborder: 1px solid transparent;\n+\tmargin-top: var(--spacing);\n+\tborder-radius: 6px;\n+\tvertical-align: middle;\n+\n+\t&.x-large {\n+\t\t@include text18;\n+\n+\t\t// TODO: ripple 효과\n+\t\t// position: relative;\n+\t\t// z-index: 1;\n+\t\t// overflow: hidden;\n+\t\tpadding: 13px 12px;\n+\n+\t\t&.button-icon {\n+\t\t\tpadding: 15px;\n+\t\t}\n+\t}\n+\n+\t&.large {\n+\t\t@include text14;\n+\n+\t\tmin-width: 80px;\n+\t\tpadding: 11px 12px;\n+\t\ttext-align: center;\n+\n+\t\t&.button-icon {\n+\t\t\tmin-width: unset;\n+\t\t\tpadding: 11px;\n+\t\t}\n+\t}\n+\n+\t&.medium {\n+\t\t@include text14;\n+\n+\t\tpadding: 7px 10px 7px 9px;\n+\t}\n+\n+\t&.small {\n+\t\t@include text11;\n+\n+\t\tpadding: 3px 8px 3px 7px;\n+\t}\n+\n+\t&.primary {\n+\t\tbackground: $primary800;\n+\t\tcolor: $white;\n+\n+\t\t&:active {\n+\t\t\tbackground: $primary900;\n+\t\t}\n+\n+\t\t&:disabled {\n+\t\t\tbackground: $greyscale200;\n+\t\t\tcolor: $greyscale400;\n+\t\t\tpointer-events: none;\n+\t\t}\n+\n+\t\t// TODO: ripple 효과\n+\t\t// &::after {\n+\t\t// \tposition: absolute;\n+\t\t// \ttop: var(--effectTop);\n+\t\t// \tleft: var(--effectLeft);\n+\t\t// \tz-index: 1;\n+\t\t// \tcontent: '';\n+\t\t// \twidth: 1px;\n+\t\t// \theight: 1px;\n+\t\t// \tborder-radius: 100%;\n+\t\t// \tbackground: rgba(0, 0, 0, 0.4);\n+\t\t// }\n+\t\t// &.active {\n+\t\t// \tpointer-events: none;\n+\t\t// \t&::after {\n+\t\t// \t\tanimation: effect 0.5s ease-in;\n+\t\t// \t}\n+\t\t// }\n+\t}\n+\n+\t&.secondary-2nd {\n+\t\tborder-color: $primary700;\n+\t\tbackground: $white;\n+\t\tcolor: $primary800;\n+\n+\t\t&:active {\n+\t\t\tbackground: $primary200;\n+\t\t\tcolor: $primary900;\n+\t\t}\n+\n+\t\t&:disabled {\n+\t\t\tborder-color: $greyscale100;\n+\t\t\tbackground: $greyscale100;\n+\t\t\tcolor: $greyscale400;\n+\t\t\tpointer-events: none;\n+\t\t}\n+\t}\n+\n+\t&.secondary-3rd {\n+\t\tborder-color: $greyscale300;\n+\t\tbackground: $white;\n+\t\tcolor: $greyscale900;\n+\n+\t\t&:active {\n+\t\t\tborder-color: $greyscale400;\n+\t\t\tbackground: $greyscale300;\n+\t\t\tcolor: $greyscale900;\n+\t\t}\n+\n+\t\t&:disabled {\n+\t\t\tborder-color: transparent;\n+\t\t\tbackground: $greyscale100;\n+\t\t\tcolor: $greyscale400;\n+\t\t\tpointer-events: none;\n+\t\t}\n+\t}\n+\n+\t&.secondary-4th {\n+\t\tbackground: $greyscale200;\n+\t\tcolor: $greyscale900;\n+\n+\t\t&:active {\n+\t\t\tbackground: $greyscale300;\n+\t\t}\n+\n+\t\t&:disabled {\n+\t\t\tbackground: $greyscale100;\n+\t\t\tcolor: $greyscale400;\n+\t\t\tpointer-events: none;\n+\t\t}\n+\t}\n+}\n+\n+// TODO: ripple 효과\n+// @keyframes effect {\n+// \t0% {\n+// \t\ttransform: scale(0, 0);\n+// \t\topacity: 1;\n+// \t}\n+// \t40% {\n+// \t\topacity: 1;\n+// \t}\n+// \t100% {\n+// \t\topacity: 0;\n+// \t\ttransform: scale(1000, 1000);\n+// \t}\n+// }\n"
+                },
+                {
+                    "date": 1694330278429,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,20 +6,15 @@\n \talign-items: center;\n \tjustify-content: center;\n \tborder: 1px solid transparent;\n \tmargin-top: var(--spacing);\n-\tborder-radius: 6px;\n+\tborder-radius: 12px;\n \tvertical-align: middle;\n \n \t&.x-large {\n \t\t@include text18;\n+\t\tpadding: 13px 16px 15px 16px;\n \n-\t\t// TODO: ripple 효과\n-\t\t// position: relative;\n-\t\t// z-index: 1;\n-\t\t// overflow: hidden;\n-\t\tpadding: 13px 12px;\n-\n \t\t&.button-icon {\n \t\t\tpadding: 15px;\n \t\t}\n \t}\n"
+                },
+                {
+                    "date": 1694331638069,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n \t&.large {\n \t\t@include text14;\n \n \t\tmin-width: 80px;\n-\t\tpadding: 11px 12px;\n+\t\tpadding: 11px 16px 13px 16px;\n \t\ttext-align: center;\n \n \t\t&.button-icon {\n \t\t\tmin-width: unset;\n"
+                },
+                {
+                    "date": 1694331735042,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -44,39 +44,20 @@\n \t\tpadding: 3px 8px 3px 7px;\n \t}\n \n \t&.primary {\n-\t\tbackground: $primary800;\n+\t\tbackground: $primary100;\n \t\tcolor: $white;\n \n \t\t&:active {\n-\t\t\tbackground: $primary900;\n+\t\t\tbackground: $primary200;\n \t\t}\n \n \t\t&:disabled {\n \t\t\tbackground: $greyscale200;\n \t\t\tcolor: $greyscale400;\n \t\t\tpointer-events: none;\n \t\t}\n-\n-\t\t// TODO: ripple 효과\n-\t\t// &::after {\n-\t\t// \tposition: absolute;\n-\t\t// \ttop: var(--effectTop);\n-\t\t// \tleft: var(--effectLeft);\n-\t\t// \tz-index: 1;\n-\t\t// \tcontent: '';\n-\t\t// \twidth: 1px;\n-\t\t// \theight: 1px;\n-\t\t// \tborder-radius: 100%;\n-\t\t// \tbackground: rgba(0, 0, 0, 0.4);\n-\t\t// }\n-\t\t// &.active {\n-\t\t// \tpointer-events: none;\n-\t\t// \t&::after {\n-\t\t// \t\tanimation: effect 0.5s ease-in;\n-\t\t// \t}\n-\t\t// }\n \t}\n \n \t&.secondary-2nd {\n \t\tborder-color: $primary700;\n"
+                },
+                {
+                    "date": 1694331825467,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -59,15 +59,16 @@\n \t\t}\n \t}\n \n \t&.secondary-2nd {\n-\t\tborder-color: $primary700;\n+\t\tborder-color: $primary100;\n \t\tbackground: $white;\n-\t\tcolor: $primary800;\n+\t\tcolor: $primary100;\n \n \t\t&:active {\n-\t\t\tbackground: $primary200;\n-\t\t\tcolor: $primary900;\n+\t\t\tborder-color: $primary200;\n+            background: $greyscale250;\n+\t\t\tcolor: $primary200;\n \t\t}\n \n \t\t&:disabled {\n \t\t\tborder-color: $greyscale100;\n"
+                },
+                {
+                    "date": 1694332476064,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,14 +6,15 @@\n \talign-items: center;\n \tjustify-content: center;\n \tborder: 1px solid transparent;\n \tmargin-top: var(--spacing);\n-\tborder-radius: 12px;\n+\tborder-radius: 8px;\n \tvertical-align: middle;\n \n \t&.x-large {\n \t\t@include text18;\n \t\tpadding: 13px 16px 15px 16px;\n+        border-radius:12px;\n \n \t\t&.button-icon {\n \t\t\tpadding: 15px;\n \t\t}\n@@ -70,9 +71,9 @@\n \t\t\tcolor: $primary200;\n \t\t}\n \n \t\t&:disabled {\n-\t\t\tborder-color: $greyscale100;\n+            border-color: $greyscale100;\n \t\t\tbackground: $greyscale100;\n \t\t\tcolor: $greyscale400;\n \t\t\tpointer-events: none;\n \t\t}\n"
+                },
+                {
+                    "date": 1694332514602,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,11 @@\n \tborder-radius: 8px;\n \tvertical-align: middle;\n \n \t&.x-large {\n-\t\t@include text18;\n+\t\t@include text18{\n+            font-weight:500;\n+        };\n \t\tpadding: 13px 16px 15px 16px;\n         border-radius:12px;\n \n \t\t&.button-icon {\n"
+                },
+                {
+                    "date": 1694332530643,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n \t}\n \n \t&.large {\n \t\t@include text14;\n-\n+6\n \t\tmin-width: 80px;\n \t\tpadding: 11px 16px 13px 16px;\n \t\ttext-align: center;\n \n"
+                },
+                {
+                    "date": 1694332611030,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,19 +13,19 @@\n \t&.x-large {\n \t\t@include text18{\n             font-weight:500;\n         };\n-\t\tpadding: 13px 16px 15px 16px;\n+\t\tpadding: 12px 16px 14px 16px;\n         border-radius:12px;\n \n \t\t&.button-icon {\n \t\t\tpadding: 15px;\n \t\t}\n \t}\n \n \t&.large {\n-\t\t@include text14;\n-6\n+\t\t@include text16;\n+\n \t\tmin-width: 80px;\n \t\tpadding: 11px 16px 13px 16px;\n \t\ttext-align: center;\n \n"
+                },
+                {
+                    "date": 1694332625144,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,9 @@\n \t&.large {\n \t\t@include text16;\n \n \t\tmin-width: 80px;\n-\t\tpadding: 11px 16px 13px 16px;\n+\t\tpadding: 10px 16px 12px 16px;\n \t\ttext-align: center;\n \n \t\t&.button-icon {\n \t\t\tmin-width: unset;\n"
+                },
+                {
+                    "date": 1694332853570,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,11 +37,17 @@\n \n \t&.medium {\n \t\t@include text14;\n \n-\t\tpadding: 7px 10px 7px 9px;\n+\t\tpadding: 7px 12px 7px 12px;\n \t}\n \n+    &.medium02 {\n+\t\t@include text14;\n+\n+\t\tpadding: 3px 12px 5px 12px;\n+\t}\n+\n \t&.small {\n \t\t@include text11;\n \n \t\tpadding: 3px 8px 3px 7px;\n"
+                },
+                {
+                    "date": 1694332927601,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,9 +43,9 @@\n \n     &.medium02 {\n \t\t@include text14;\n \n-\t\tpadding: 3px 12px 5px 12px;\n+\t\tpadding: 3px 12px 4px 12px;\n \t}\n \n \t&.small {\n \t\t@include text11;\n"
+                },
+                {
+                    "date": 1694332940229,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,9 +43,9 @@\n \n     &.medium02 {\n \t\t@include text14;\n \n-\t\tpadding: 3px 12px 4px 12px;\n+\t\tpadding: 2px 12px 4px 12px;\n \t}\n \n \t&.small {\n \t\t@include text11;\n"
+                },
+                {
+                    "date": 1694359812382,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -50,8 +50,9 @@\n \t&.small {\n \t\t@include text11;\n \n \t\tpadding: 3px 8px 3px 7px;\n+\t\tborder-radius:4px;\n \t}\n \n \t&.primary {\n \t\tbackground: $primary100;\n"
+                },
+                {
+                    "date": 1694359856930,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -44,15 +44,16 @@\n     &.medium02 {\n \t\t@include text14;\n \n \t\tpadding: 2px 12px 4px 12px;\n+\t\tborder-radius: 6px;\n \t}\n \n \t&.small {\n \t\t@include text11;\n \n \t\tpadding: 3px 8px 3px 7px;\n-\t\tborder-radius:4px;\n+\t\tborder-radius: 4px;\n \t}\n \n \t&.primary {\n \t\tbackground: $primary100;\n"
+                }
+            ],
+            "date": 1694329864081,
+            "name": "Commit-0",
+            "content": "@import '@styles/scss/_variables';\n@import '@styles/scss/_mixins';\n\n.button-default {\n\tdisplay: inline-flex;\n\talign-items: center;\n\tjustify-content: center;\n\tborder: 1px solid transparent;\n\tmargin-top: var(--spacing);\n\tborder-radius: 6px;\n\tvertical-align: middle;\n\n\t&.x-large {\n\t\t@include text18;\n\n\t\t// TODO: ripple 효과\n\t\t// position: relative;\n\t\t// z-index: 1;\n\t\t// overflow: hidden;\n\t\tpadding: 13px 12px;\n\n\t\t&.button-icon {\n\t\t\tpadding: 15px;\n\t\t}\n\t}\n\n\t&.large {\n\t\t@include text14;\n\n\t\tmin-width: 80px;\n\t\tpadding: 11px 12px;\n\t\ttext-align: center;\n\n\t\t&.button-icon {\n\t\t\tmin-width: unset;\n\t\t\tpadding: 11px;\n\t\t}\n\t}\n\n\t&.medium {\n\t\t@include text14;\n\n\t\tpadding: 7px 10px 7px 9px;\n\t}\n\n\t&.small {\n\t\t@include text11;\n\n\t\tpadding: 3px 8px 3px 7px;\n\t}\n\n\t&.primary {\n\t\tbackground: $primary800;\n\t\tcolor: $white;\n\n\t\t&:active {\n\t\t\tbackground: $primary900;\n\t\t}\n\n\t\t&:disabled {\n\t\t\tbackground: $greyscale200;\n\t\t\tcolor: $greyscale400;\n\t\t\tpointer-events: none;\n\t\t}\n\n\t\t// TODO: ripple 효과\n\t\t// &::after {\n\t\t// \tposition: absolute;\n\t\t// \ttop: var(--effectTop);\n\t\t// \tleft: var(--effectLeft);\n\t\t// \tz-index: 1;\n\t\t// \tcontent: '';\n\t\t// \twidth: 1px;\n\t\t// \theight: 1px;\n\t\t// \tborder-radius: 100%;\n\t\t// \tbackground: rgba(0, 0, 0, 0.4);\n\t\t// }\n\t\t// &.active {\n\t\t// \tpointer-events: none;\n\t\t// \t&::after {\n\t\t// \t\tanimation: effect 0.5s ease-in;\n\t\t// \t}\n\t\t// }\n\t}\n\n\t&.secondary-2nd {\n\t\tborder-color: $primary700;\n\t\tbackground: $white;\n\t\tcolor: $primary800;\n\n\t\t&:active {\n\t\t\tbackground: $primary200;\n\t\t\tcolor: $primary900;\n\t\t}\n\n\t\t&:disabled {\n\t\t\tborder-color: $greyscale100;\n\t\t\tbackground: $greyscale100;\n\t\t\tcolor: $greyscale400;\n\t\t\tpointer-events: none;\n\t\t}\n\t}\n\n\t&.secondary-3rd {\n\t\tborder-color: $greyscale300;\n\t\tbackground: $white;\n\t\tcolor: $greyscale900;\n\n\t\t&:active {\n\t\t\tborder-color: $greyscale400;\n\t\t\tbackground: $greyscale300;\n\t\t\tcolor: $greyscale900;\n\t\t}\n\n\t\t&:disabled {\n\t\t\tborder-color: transparent;\n\t\t\tbackground: $greyscale100;\n\t\t\tcolor: $greyscale400;\n\t\t\tpointer-events: none;\n\t\t}\n\t}\n\n\t&.secondary-4th {\n\t\tbackground: $greyscale200;\n\t\tcolor: $greyscale900;\n\n\t\t&:active {\n\t\t\tbackground: $greyscale300;\n\t\t}\n\n\t\t&:disabled {\n\t\t\tbackground: $greyscale100;\n\t\t\tcolor: $greyscale400;\n\t\t\tpointer-events: none;\n\t\t}\n\t}\n}\n\n// TODO: ripple 효과\n// @keyframes effect {\n// \t0% {\n// \t\ttransform: scale(0, 0);\n// \t\topacity: 1;\n// \t}\n// \t40% {\n// \t\topacity: 1;\n// \t}\n// \t100% {\n// \t\topacity: 0;\n// \t\ttransform: scale(1000, 1000);\n// \t}\n// }\n"
+        }
+    ]
+}

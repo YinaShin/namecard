@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 3,
+            "activePatchIndex": 9,
             "patches": [
                 {
                     "date": 1693919536401,
@@ -20,6 +20,30 @@
                 {
                     "date": 1693919588780,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n     display:flex;\n     justify-content: space-between;\n     border-bottom:1px solid #EBEEF0;\n     box-sizing: border-box;\n-\tbackground-color: $greyscale100;\n+\tbackground-color: $white;\n     button {\n \t\tdisplay: inline-block;\n \t\twidth: 32px;\n \t\theight: 32px;\n"
+                },
+                {
+                    "date": 1694358829649,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,9 +37,9 @@\n }\n .header-left {\n     display:flex;\n     align-items: center;\n-    margin-left:12px;\n+    margin-left:20px;\n     button {\n         + h1 {\n             margin-left:8px;\n         }\n@@ -52,6 +52,6 @@\n }\n .header-right {\n \tdisplay:flex;\n     align-items: center;\n-    margin-left:12px;\n+    margin-left:20px;\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1694358852349,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,6 +52,6 @@\n }\n .header-right {\n \tdisplay:flex;\n     align-items: center;\n-    margin-left:20px;\n+    margin-right:20px;\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1694358877145,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,6 +52,6 @@\n }\n .header-right {\n \tdisplay:flex;\n     align-items: center;\n-    margin-right:20px;\n+    margin-right:16px;\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1694358897152,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,6 +52,6 @@\n }\n .header-right {\n \tdisplay:flex;\n     align-items: center;\n-    margin-right:16px;\n+    margin-right:20px;\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1694358940200,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,8 +13,9 @@\n \t\twidth: 32px;\n \t\theight: 32px;\n \n \t\t&.icon-header-back {\n+\t\t\tmargin-left: -10px;\n \t\t\tflex: 0 0 auto;\n \t\t\tbackground: url(../styles/assets/images/icon/icon-header-back.svg) no-repeat 4px\n \t\t\t\tcenter/32px 32px;\n \t\t}\n"
+                },
+                {
+                    "date": 1694358975250,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,8 +20,9 @@\n \t\t\t\tcenter/32px 32px;\n \t\t}\n \n \t\t&.icon-header-menu {\n+\t\t\tmargin-right:-4px;\n \t\t\tbackground: url(../styles/assets/images/icon/icon-header-menu.svg) no-repeat center\n \t\t\t\tcenter/32px 32px;\n \t\t}\n \n"
                 }
             ],
             "date": 1693919536401,

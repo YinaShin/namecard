@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 35,
             "patches": [
                 {
                     "date": 1693921451060,
@@ -12,6 +12,142 @@
                 {
                     "date": 1693921494820,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,8 +24,8 @@\n \t--t9-line-height: 16px;\n }\n \n body {\n-\t@include text14(\n+\t@include text14{\n \t\tcolor: $greyscale900;\n-\t)\n+\t}\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1694359508358,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,5 +27,10 @@\n body {\n \t@include text14{\n \t\tcolor: $greyscale900;\n \t}\n+}\n+\n+.container {\n+\tdisplay:flex;\n+\tpadding:0 16px;\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1694359545674,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,8 +29,9 @@\n \t\tcolor: $greyscale900;\n \t}\n }\n \n-.container {\n+.contents-area {\n \tdisplay:flex;\n+\tflex-direction: column;\n \tpadding:0 16px;\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1694359565305,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,6 +32,7 @@\n \n .contents-area {\n \tdisplay:flex;\n \tflex-direction: column;\n-\tpadding:0 16px;\n+\tmin-height: calc(100vh - 52px);\n+\t\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1694359576121,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,6 +33,8 @@\n .contents-area {\n \tdisplay:flex;\n \tflex-direction: column;\n \tmin-height: calc(100vh - 52px);\n-\t\n+\t.container {\n+\t\t\n+\t}\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1694359614077,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,7 +34,7 @@\n \tdisplay:flex;\n \tflex-direction: column;\n \tmin-height: calc(100vh - 52px);\n \t.container {\n-\t\t\n+\t\tpadding:20px 16px;\n \t}\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1694359685882,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,6 +35,13 @@\n \tflex-direction: column;\n \tmin-height: calc(100vh - 52px);\n \t.container {\n \t\tpadding:20px 16px;\n+\t\t.fullsize-layout {\n+            margin-left: -16px;\n+            margin-right: -16px;\n+            &:first-child {\n+                margin-top: -20px;\n+            }\n+        }\n \t}\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1694364626837,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,5 +43,10 @@\n                 margin-top: -20px;\n             }\n         }\n \t}\n+}\n+\n+/* templist */\n+.templist {\n+\tpadding:20px;\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1694364633313,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -46,7 +46,7 @@\n \t}\n }\n \n /* templist */\n-.templist {\n+.temp-list {\n \tpadding:20px;\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1694364640008,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -47,6 +47,6 @@\n }\n \n /* templist */\n .temp-list {\n-\tpadding:20px;\n+\tpadding:10px;\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1694364701032,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -48,5 +48,6 @@\n \n /* templist */\n .temp-list {\n \tpadding:10px;\n+\tborder-bottom: 2px solid $greyscale250;\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1694364708570,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -48,6 +48,6 @@\n \n /* templist */\n .temp-list {\n \tpadding:10px;\n-\tborder-bottom: 2px solid $greyscale250;\n+\tborder-bottom: 1px solid $greyscale250;\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1694364732408,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -49,5 +49,8 @@\n /* templist */\n .temp-list {\n \tpadding:10px;\n \tborder-bottom: 1px solid $greyscale250;\n+\ta {\n+\t\tpadding:0 5px;\n+\t}\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1694366666548,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -45,8 +45,18 @@\n         }\n \t}\n }\n \n+.h1 {\n+\t@include text20;\n+}\n+.h2 {\n+\t@include text18;\n+}\n+.h3 {\n+\t@include text16;\n+}\n+\n /* templist */\n .temp-list {\n \tpadding:10px;\n \tborder-bottom: 1px solid $greyscale250;\n"
+                },
+                {
+                    "date": 1694366702685,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -46,15 +46,21 @@\n \t}\n }\n \n .h1 {\n-\t@include text20;\n+\t@include text20{\n+\t\tfont-weight:500;\n+\t}\n }\n .h2 {\n-\t@include text18;\n+\t@include text18{\n+\t\tfont-weight:500;\n+\t};\n }\n .h3 {\n-\t@include text16;\n+\t@include text16{\n+\t\tfont-weight:500;\n+\t};\n }\n \n /* templist */\n .temp-list {\n"
+                },
+                {
+                    "date": 1694369647078,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -61,8 +61,14 @@\n \t\tfont-weight:500;\n \t};\n }\n \n+.button-group {\n+\t.button-row {\n+\t\tdisplay: flex;\n+\t}\n+}\n+\n /* templist */\n .temp-list {\n \tpadding:10px;\n \tborder-bottom: 1px solid $greyscale250;\n"
+                },
+                {
+                    "date": 1694369672252,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,9 +63,11 @@\n }\n \n .button-group {\n \t.button-row {\n-\t\tdisplay: flex;\n+\t\t> * {\n+\t\t\tdisplay:flex;\n+\t\t}\n \t}\n }\n \n /* templist */\n"
+                },
+                {
+                    "date": 1694369701961,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,10 +63,11 @@\n }\n \n .button-group {\n \t.button-row {\n+\t\tdisplay:flex;\n \t\t> * {\n-\t\t\tdisplay:flex;\n+\t\t\tflex:1;\n \t\t}\n \t}\n }\n \n"
+                },
+                {
+                    "date": 1694369759000,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -62,8 +62,11 @@\n \t};\n }\n \n .button-group {\n+\t&.sticky-button {\n+\t\tmargin-top:40px\n+\t}\n \t.button-row {\n \t\tdisplay:flex;\n \t\t> * {\n \t\t\tflex:1;\n"
+                },
+                {
+                    "date": 1694369773578,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,9 +63,9 @@\n }\n \n .button-group {\n \t&.sticky-button {\n-\t\tmargin-top:40px\n+\t\tmargin-top:20px\n \t}\n \t.button-row {\n \t\tdisplay:flex;\n \t\t> * {\n"
+                },
+                {
+                    "date": 1694369799776,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,9 +63,10 @@\n }\n \n .button-group {\n \t&.sticky-button {\n-\t\tmargin-top:20px\n+\t\tmargin-top:20px;\n+\t\tpadding:16px 0;\n \t}\n \t.button-row {\n \t\tdisplay:flex;\n \t\t> * {\n"
+                },
+                {
+                    "date": 1694369807890,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,9 +64,9 @@\n \n .button-group {\n \t&.sticky-button {\n \t\tmargin-top:20px;\n-\t\tpadding:16px 0;\n+\t\tpadding:0 16px;\n \t}\n \t.button-row {\n \t\tdisplay:flex;\n \t\t> * {\n"
+                },
+                {
+                    "date": 1694369833686,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -71,8 +71,11 @@\n \t\tdisplay:flex;\n \t\t> * {\n \t\t\tflex:1;\n \t\t}\n+\t\t+ .button-row {\n+\t\t\tmargin-top: 6px;\n+\t\t}\n \t}\n }\n \n /* templist */\n"
+                },
+                {
+                    "date": 1694369844117,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -70,8 +70,9 @@\n \t.button-row {\n \t\tdisplay:flex;\n \t\t> * {\n \t\t\tflex:1;\n+\t\t\tmargin:0 3px;\n \t\t}\n \t\t+ .button-row {\n \t\t\tmargin-top: 6px;\n \t\t}\n"
+                },
+                {
+                    "date": 1694369890204,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,9 +63,9 @@\n }\n \n .button-group {\n \t&.sticky-button {\n-\t\tmargin-top:20px;\n+\t\tmargin:20px -3px 0;\n \t\tpadding:0 16px;\n \t}\n \t.button-row {\n \t\tdisplay:flex;\n"
+                },
+                {
+                    "date": 1694369919323,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,9 +64,9 @@\n \n .button-group {\n \t&.sticky-button {\n \t\tmargin:20px -3px 0;\n-\t\tpadding:0 16px;\n+\t\tpadding:0 13px\n \t}\n \t.button-row {\n \t\tdisplay:flex;\n \t\t> * {\n"
+                },
+                {
+                    "date": 1694369942022,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,14 +64,13 @@\n \n .button-group {\n \t&.sticky-button {\n \t\tmargin:20px -3px 0;\n-\t\tpadding:0 13px\n+\t\tpadding:0 16px\n \t}\n \t.button-row {\n \t\tdisplay:flex;\n \t\t> * {\n-\t\t\tflex:1;\n \t\t\tmargin:0 3px;\n \t\t}\n \t\t+ .button-row {\n \t\t\tmargin-top: 6px;\n"
+                },
+                {
+                    "date": 1694369966248,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,8 +24,9 @@\n \t--t9-line-height: 16px;\n }\n \n body {\n+\toverflow-x: hidden;\n \t@include text14{\n \t\tcolor: $greyscale900;\n \t}\n }\n@@ -69,8 +70,9 @@\n \t}\n \t.button-row {\n \t\tdisplay:flex;\n \t\t> * {\n+\t\t\tflex:1;\n \t\t\tmargin:0 3px;\n \t\t}\n \t\t+ .button-row {\n \t\t\tmargin-top: 6px;\n"
+                },
+                {
+                    "date": 1694370001655,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,8 @@\n \t--t9-line-height: 16px;\n }\n \n body {\n-\toverflow-x: hidden;\n \t@include text14{\n \t\tcolor: $greyscale900;\n \t}\n }\n@@ -64,8 +63,9 @@\n }\n \n .button-group {\n \t&.sticky-button {\n+\t\toverflow-x: hidden;\n \t\tmargin:20px -3px 0;\n \t\tpadding:0 16px\n \t}\n \t.button-row {\n"
+                },
+                {
+                    "date": 1694370087409,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -65,9 +65,9 @@\n .button-group {\n \t&.sticky-button {\n \t\toverflow-x: hidden;\n \t\tmargin:20px -3px 0;\n-\t\tpadding:0 16px\n+\t\tpadding:0 16px;\n \t}\n \t.button-row {\n \t\tdisplay:flex;\n \t\t> * {\n"
+                },
+                {
+                    "date": 1694370404329,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,9 +64,9 @@\n \n .button-group {\n \t&.sticky-button {\n \t\toverflow-x: hidden;\n-\t\tmargin:20px -3px 0;\n+\t\tmargin-top:20px;\n \t\tpadding:0 16px;\n \t}\n \t.button-row {\n \t\tdisplay:flex;\n"
+                },
+                {
+                    "date": 1694370413548,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,8 +64,9 @@\n \n .button-group {\n \t&.sticky-button {\n \t\toverflow-x: hidden;\n+\t\twidth:100%;\n \t\tmargin-top:20px;\n \t\tpadding:0 16px;\n \t}\n \t.button-row {\n"
+                },
+                {
+                    "date": 1694370432461,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -65,9 +65,9 @@\n .button-group {\n \t&.sticky-button {\n \t\toverflow-x: hidden;\n \t\twidth:100%;\n-\t\tmargin-top:20px;\n+\t\tmargin-top:40px;\n \t\tpadding:0 16px;\n \t}\n \t.button-row {\n \t\tdisplay:flex;\n"
+                },
+                {
+                    "date": 1694370493154,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -66,9 +66,9 @@\n \t&.sticky-button {\n \t\toverflow-x: hidden;\n \t\twidth:100%;\n \t\tmargin-top:40px;\n-\t\tpadding:0 16px;\n+\t\tpadding:0 13px;\n \t}\n \t.button-row {\n \t\tdisplay:flex;\n \t\t> * {\n"
+                },
+                {
+                    "date": 1694370629753,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -65,9 +65,9 @@\n .button-group {\n \t&.sticky-button {\n \t\toverflow-x: hidden;\n \t\twidth:100%;\n-\t\tmargin-top:40px;\n+\t\tmargin:40px 0 32px;\n \t\tpadding:0 13px;\n \t}\n \t.button-row {\n \t\tdisplay:flex;\n"
                 }
             ],
             "date": 1693921451060,

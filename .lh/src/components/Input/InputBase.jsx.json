@@ -1,0 +1,342 @@
+{
+    "sourceFile": "src/components/Input/InputBase.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 81,
+            "patches": [
+                {
+                    "date": 1694344169587,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1694344270250,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import PropTypes from 'prop-types';\n import classNames from 'classnames/bind';\n-import InputStyle from './InputBase.module.scss';\n+import InputStyle from './Input.module.scss';\n \n const Input = ({\n \ttype, spacing= '0', placeholder, disabled, readonly, error=false}) => {\n \tconst cx = classNames.bind(InputStyle);\n"
+                },
+                {
+                    "date": 1694344527937,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,12 @@\n \ttype, spacing= '0', placeholder, disabled, readonly, error=false}) => {\n \tconst cx = classNames.bind(InputStyle);\n \treturn (\n \t\t<div\n-\t\t\tclassName={cx('form-set')}\n+\t\t\tclassName={cx('input-wrap', {\n+\t\t\t\t'input-disabled': disabled,\n+\t\t\t\t'input-readonly': readonly,\n+\t\t\t})}\n \t\t\tstyle={{ '--spacing': `${spacing}px` }}\n \t\t>\n \t\t\t<input\n \t\t\t\ttype={type}\n"
+                },
+                {
+                    "date": 1694344706702,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,20 @@\n import classNames from 'classnames/bind';\n import InputStyle from './Input.module.scss';\n \n const Input = ({\n-\ttype, spacing= '0', placeholder, disabled, readonly, error=false}) => {\n+\tid,\n+\tvalue,\n+\tsetValue,\n+\tplaceholder,\n+\tonChange,\n+\tdisabled,\n+\treadonly,\n+\tmaxLength,\n+\ttype = \"text\",\n+\terror = false,\n+\tspacing = \"0\",\n+}) => {\n \tconst cx = classNames.bind(InputStyle);\n \treturn (\n \t\t<div\n \t\t\tclassName={cx('input-wrap', {\n@@ -13,8 +24,9 @@\n \t\t\t})}\n \t\t\tstyle={{ '--spacing': `${spacing}px` }}\n \t\t>\n \t\t\t<input\n+\t\t\t\tid={id}\n \t\t\t\ttype={type}\n \t\t\t\tclassName={InputStyle['input']}\n \t\t\t\tplaceholder={placeholder}\n \t\t\t\tdisabled={disabled}\n"
+                },
+                {
+                    "date": 1694344773267,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,8 +20,9 @@\n \t\t<div\n \t\t\tclassName={cx('input-wrap', {\n \t\t\t\t'input-disabled': disabled,\n \t\t\t\t'input-readonly': readonly,\n+\t\t\t\t'input-error-wrap': error,\n \t\t\t})}\n \t\t\tstyle={{ '--spacing': `${spacing}px` }}\n \t\t>\n \t\t\t<input\n"
+                },
+                {
+                    "date": 1694345095023,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,8 +13,9 @@\n \tmaxLength,\n \ttype = \"text\",\n \terror = false,\n \tspacing = \"0\",\n+\tisWithButton = false,\n }) => {\n \tconst cx = classNames.bind(InputStyle);\n \treturn (\n \t\t<div\n@@ -26,15 +27,21 @@\n \t\t\tstyle={{ '--spacing': `${spacing}px` }}\n \t\t>\n \t\t\t<input\n \t\t\t\tid={id}\n+\t\t\t\tvalue={value}\n \t\t\t\ttype={type}\n \t\t\t\tclassName={InputStyle['input']}\n \t\t\t\tplaceholder={placeholder}\n \t\t\t\tdisabled={disabled}\n \t\t\t\treadonly={readonly}\n+\t\t\t\tonChange={onChange}\n \t\t\t>\n \t\t\t</input>\n+\t\t\t{isWithButton && (\n+\t\t\t\t<div></div>\n+\n+\t\t\t)}\n \t\t</div>\n \t);\n };\n \n"
+                },
+                {
+                    "date": 1694345178234,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,8 +14,9 @@\n \ttype = \"text\",\n \terror = false,\n \tspacing = \"0\",\n \tisWithButton = false,\n+\twithButtonText,\n }) => {\n \tconst cx = classNames.bind(InputStyle);\n \treturn (\n \t\t<div\n@@ -37,10 +38,11 @@\n \t\t\t\tonChange={onChange}\n \t\t\t>\n \t\t\t</input>\n \t\t\t{isWithButton && (\n-\t\t\t\t<div></div>\n-\n+\t\t\t\t<div>\n+\t\t\t\t\t<button><span className=\"label\">{ withButtonText }</span></button>\n+\t\t\t\t</div>\n \t\t\t)}\n \t\t</div>\n \t);\n };\n"
+                },
+                {
+                    "date": 1694345254537,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,13 +37,13 @@\n \t\t\t\treadonly={readonly}\n \t\t\t\tonChange={onChange}\n \t\t\t>\n \t\t\t</input>\n-\t\t\t{isWithButton && (\n-\t\t\t\t<div>\n+\t\t\t<div className='right'>\n+\t\t\t\t{isWithButton && (\n \t\t\t\t\t<button><span className=\"label\">{ withButtonText }</span></button>\n-\t\t\t\t</div>\n-\t\t\t)}\n+\t\t\t\t)}\n+\t\t\t</div>\n \t\t</div>\n \t);\n };\n \n"
+                },
+                {
+                    "date": 1694345335603,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,10 @@\n import PropTypes from 'prop-types';\n import classNames from 'classnames/bind';\n+import { useRef } from 'react';\n import InputStyle from './Input.module.scss';\n \n+const cx = classNames.bind(InputStyle);\n const Input = ({\n \tid,\n \tvalue,\n \tsetValue,\n@@ -16,9 +18,9 @@\n \tspacing = \"0\",\n \tisWithButton = false,\n \twithButtonText,\n }) => {\n-\tconst cx = classNames.bind(InputStyle);\n+\tconst inputRef = useRef();\n \treturn (\n \t\t<div\n \t\t\tclassName={cx('input-wrap', {\n \t\t\t\t'input-disabled': disabled,\n@@ -38,8 +40,11 @@\n \t\t\t\tonChange={onChange}\n \t\t\t>\n \t\t\t</input>\n \t\t\t<div className='right'>\n+\t\t\t\t{!disabled && !readonly && value && (\n+\t\t\t\t\t<ResetButton inputRef={inputRef} setValue={setValue} />\n+\t\t\t\t)}\n \t\t\t\t{isWithButton && (\n \t\t\t\t\t<button><span className=\"label\">{ withButtonText }</span></button>\n \t\t\t\t)}\n \t\t\t</div>\n"
+                },
+                {
+                    "date": 1694345352085,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -41,9 +41,9 @@\n \t\t\t>\n \t\t\t</input>\n \t\t\t<div className='right'>\n \t\t\t\t{!disabled && !readonly && value && (\n-\t\t\t\t\t<ResetButton inputRef={inputRef} setValue={setValue} />\n+\t\t\t\t\t<button inputRef={inputRef} setValue={setValue}></button>\n \t\t\t\t)}\n \t\t\t\t{isWithButton && (\n \t\t\t\t\t<button><span className=\"label\">{ withButtonText }</span></button>\n \t\t\t\t)}\n"
+                },
+                {
+                    "date": 1694346415559,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n import { useRef } from 'react';\n import InputStyle from './Input.module.scss';\n \n const cx = classNames.bind(InputStyle);\n-const Input = ({\n+const InputBase = ({\n \tid,\n \tvalue,\n \tsetValue,\n \tplaceholder,\n@@ -60,5 +60,5 @@\n \treadonly: PropTypes.bool,\n \terror:PropTypes.bool,\n };\n \n-export default Input;\n+export default InputBase;\n"
+                },
+                {
+                    "date": 1694346468252,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,9 +51,9 @@\n \t\t</div>\n \t);\n };\n \n-Input.propTypes = {\n+InputBase.propTypes = {\n \ttype: PropTypes.string,\n \tchildren: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),\n \tspacing: PropTypes.string,\n \tdisabled: PropTypes.bool,\n"
+                },
+                {
+                    "date": 1694347004886,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,9 +27,9 @@\n \t\t\t\t'input-readonly': readonly,\n \t\t\t\t'input-error-wrap': error,\n \t\t\t})}\n \t\t\tstyle={{ '--spacing': `${spacing}px` }}\n-\t\t>\n+\t\t>\t\n \t\t\t<input\n \t\t\t\tid={id}\n \t\t\t\tvalue={value}\n \t\t\t\ttype={type}\n"
+                },
+                {
+                    "date": 1694347546930,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,8 +37,9 @@\n \t\t\t\tplaceholder={placeholder}\n \t\t\t\tdisabled={disabled}\n \t\t\t\treadonly={readonly}\n \t\t\t\tonChange={onChange}\n+\t\t\t\tmaxLength={maxLength}\n \t\t\t>\n \t\t\t</input>\n \t\t\t<div className='right'>\n \t\t\t\t{!disabled && !readonly && value && (\n"
+                },
+                {
+                    "date": 1694347604110,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -53,13 +53,20 @@\n \t);\n };\n \n InputBase.propTypes = {\n+\tid: PropTypes.string,\n+\tvalue: PropTypes.string,\n+\tsetValue: PropTypes.func,\n+\tplaceholder: PropTypes.string,\n+\tonChange: PropTypes.func,\n+\tdisabled: PropTypes.bool,\n+\treadonly: PropTypes.bool,\n+\tdropdownButton: PropTypes.element,\n+\talign: PropTypes.string,\n+\tmaxLength: PropTypes.number,\n \ttype: PropTypes.string,\n-\tchildren: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),\n+\terror: PropTypes.bool,\n \tspacing: PropTypes.string,\n-\tdisabled: PropTypes.bool,\n-\treadonly: PropTypes.bool,\n-\terror:PropTypes.bool,\n };\n \n export default InputBase;\n"
+                },
+                {
+                    "date": 1694348146238,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n import PropTypes from 'prop-types';\n import classNames from 'classnames/bind';\n import { useRef } from 'react';\n+import ResetButton from './button/ResetButton';\n import InputStyle from './Input.module.scss';\n \n const cx = classNames.bind(InputStyle);\n const InputBase = ({\n@@ -40,11 +41,11 @@\n \t\t\t\tonChange={onChange}\n \t\t\t\tmaxLength={maxLength}\n \t\t\t>\n \t\t\t</input>\n-\t\t\t<div className='right'>\n+\t\t\t<div className={`${InputStyle['buttons']}`}>\n \t\t\t\t{!disabled && !readonly && value && (\n-\t\t\t\t\t<button inputRef={inputRef} setValue={setValue}></button>\n+\t\t\t\t\t<ResetButton inputRef={inputRef} setValue={setValue} />\n \t\t\t\t)}\n \t\t\t\t{isWithButton && (\n \t\t\t\t\t<button><span className=\"label\">{ withButtonText }</span></button>\n \t\t\t\t)}\n"
+                },
+                {
+                    "date": 1694348195109,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -36,9 +36,9 @@\n \t\t\t\ttype={type}\n \t\t\t\tclassName={InputStyle['input']}\n \t\t\t\tplaceholder={placeholder}\n \t\t\t\tdisabled={disabled}\n-\t\t\t\treadonly={readonly}\n+\t\t\t\treadOnly={readonly}\n \t\t\t\tonChange={onChange}\n \t\t\t\tmaxLength={maxLength}\n \t\t\t>\n \t\t\t</input>\n"
+                },
+                {
+                    "date": 1694348228419,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,10 +10,10 @@\n \tvalue,\n \tsetValue,\n \tplaceholder,\n \tonChange,\n-\tdisabled,\n-\treadonly,\n+\tdisabled = false,\n+\treadonly = false,\n \tmaxLength,\n \ttype = \"text\",\n \terror = false,\n \tspacing = \"0\",\n"
+                },
+                {
+                    "date": 1694349076109,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n }) => {\n \tconst inputRef = useRef();\n \treturn (\n \t\t<div\n-\t\t\tclassName={cx('input-wrap', {\n+\t\t\tclassName={cx('input-wrap input-type-box', {\n \t\t\t\t'input-disabled': disabled,\n \t\t\t\t'input-readonly': readonly,\n \t\t\t\t'input-error-wrap': error,\n \t\t\t})}\n"
+                },
+                {
+                    "date": 1694349115509,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n }) => {\n \tconst inputRef = useRef();\n \treturn (\n \t\t<div\n-\t\t\tclassName={cx('input-wrap input-type-box', {\n+\t\t\tclassName={cx(['input-wrap', 'input-type-box'], {\n \t\t\t\t'input-disabled': disabled,\n \t\t\t\t'input-readonly': readonly,\n \t\t\t\t'input-error-wrap': error,\n \t\t\t})}\n"
+                },
+                {
+                    "date": 1694349138507,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n }) => {\n \tconst inputRef = useRef();\n \treturn (\n \t\t<div\n-\t\t\tclassName={cx(['input-wrap', 'input-type-box'], {\n+\t\t\tclassName={cx(['input-type-box'], {\n \t\t\t\t'input-disabled': disabled,\n \t\t\t\t'input-readonly': readonly,\n \t\t\t\t'input-error-wrap': error,\n \t\t\t})}\n"
+                },
+                {
+                    "date": 1694349240034,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n }) => {\n \tconst inputRef = useRef();\n \treturn (\n \t\t<div\n-\t\t\tclassName={cx(['input-type-box'], {\n+\t\t\tclassName={cx('input-wrap', {\n \t\t\t\t'input-disabled': disabled,\n \t\t\t\t'input-readonly': readonly,\n \t\t\t\t'input-error-wrap': error,\n \t\t\t})}\n"
+                },
+                {
+                    "date": 1694349929197,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,8 +18,10 @@\n \terror = false,\n \tspacing = \"0\",\n \tisWithButton = false,\n \twithButtonText,\n+\tisLabel = true,\n+\tlabelText,\n }) => {\n \tconst inputRef = useRef();\n \treturn (\n \t\t<div\n@@ -28,9 +30,12 @@\n \t\t\t\t'input-readonly': readonly,\n \t\t\t\t'input-error-wrap': error,\n \t\t\t})}\n \t\t\tstyle={{ '--spacing': `${spacing}px` }}\n-\t\t>\t\n+\t\t>\n+\t\t\t{isLabel && \n+\t\t\t\t<label for={id}>{labelText}</label>\n+\t\t\t}\n \t\t\t<input\n \t\t\t\tid={id}\n \t\t\t\tvalue={value}\n \t\t\t\ttype={type}\n@@ -67,7 +72,9 @@\n \tmaxLength: PropTypes.number,\n \ttype: PropTypes.string,\n \terror: PropTypes.bool,\n \tspacing: PropTypes.string,\n+\tisLabel: PropTypes.bool,\n+\tlabelText: PropTypes.string,\n };\n \n export default InputBase;\n"
+                },
+                {
+                    "date": 1694350021776,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,19 +23,19 @@\n \tlabelText,\n }) => {\n \tconst inputRef = useRef();\n \treturn (\n+\t\t{isLabel && (\n+\t\t\t<label for={id}>{labelText}</label>\n+\t\t)}\n \t\t<div\n \t\t\tclassName={cx('input-wrap', {\n \t\t\t\t'input-disabled': disabled,\n \t\t\t\t'input-readonly': readonly,\n \t\t\t\t'input-error-wrap': error,\n \t\t\t})}\n \t\t\tstyle={{ '--spacing': `${spacing}px` }}\n-\t\t>\n-\t\t\t{isLabel && \n-\t\t\t\t<label for={id}>{labelText}</label>\n-\t\t\t}\n+\t\t>\t\n \t\t\t<input\n \t\t\t\tid={id}\n \t\t\t\tvalue={value}\n \t\t\t\ttype={type}\n"
+                },
+                {
+                    "date": 1694350083023,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,38 +23,40 @@\n \tlabelText,\n }) => {\n \tconst inputRef = useRef();\n \treturn (\n-\t\t{isLabel && (\n-\t\t\t<label for={id}>{labelText}</label>\n-\t\t)}\n-\t\t<div\n-\t\t\tclassName={cx('input-wrap', {\n-\t\t\t\t'input-disabled': disabled,\n-\t\t\t\t'input-readonly': readonly,\n-\t\t\t\t'input-error-wrap': error,\n-\t\t\t})}\n-\t\t\tstyle={{ '--spacing': `${spacing}px` }}\n-\t\t>\t\n-\t\t\t<input\n-\t\t\t\tid={id}\n-\t\t\t\tvalue={value}\n-\t\t\t\ttype={type}\n-\t\t\t\tclassName={InputStyle['input']}\n-\t\t\t\tplaceholder={placeholder}\n-\t\t\t\tdisabled={disabled}\n-\t\t\t\treadOnly={readonly}\n-\t\t\t\tonChange={onChange}\n-\t\t\t\tmaxLength={maxLength}\n-\t\t\t>\n-\t\t\t</input>\n-\t\t\t<div className={`${InputStyle['buttons']}`}>\n-\t\t\t\t{!disabled && !readonly && value && (\n-\t\t\t\t\t<ResetButton inputRef={inputRef} setValue={setValue} />\n-\t\t\t\t)}\n-\t\t\t\t{isWithButton && (\n-\t\t\t\t\t<button><span className=\"label\">{ withButtonText }</span></button>\n-\t\t\t\t)}\n+\t\t<div>\n+\t\t\t{isLabel && labelText (\n+\t\t\t\t<label for={id}>{labelText}</label>\n+\t\t\t)}\n+\t\t\t<div\n+\t\t\t\tclassName={cx('input-wrap', {\n+\t\t\t\t\t'input-disabled': disabled,\n+\t\t\t\t\t'input-readonly': readonly,\n+\t\t\t\t\t'input-error-wrap': error,\n+\t\t\t\t})}\n+\t\t\t\tstyle={{ '--spacing': `${spacing}px` }}\n+\t\t\t>\t\n+\t\t\t\t<input\n+\t\t\t\t\tid={id}\n+\t\t\t\t\tvalue={value}\n+\t\t\t\t\ttype={type}\n+\t\t\t\t\tclassName={InputStyle['input']}\n+\t\t\t\t\tplaceholder={placeholder}\n+\t\t\t\t\tdisabled={disabled}\n+\t\t\t\t\treadOnly={readonly}\n+\t\t\t\t\tonChange={onChange}\n+\t\t\t\t\tmaxLength={maxLength}\n+\t\t\t\t>\n+\t\t\t\t</input>\n+\t\t\t\t<div className={`${InputStyle['buttons']}`}>\n+\t\t\t\t\t{!disabled && !readonly && value && (\n+\t\t\t\t\t\t<ResetButton inputRef={inputRef} setValue={setValue} />\n+\t\t\t\t\t)}\n+\t\t\t\t\t{isWithButton && (\n+\t\t\t\t\t\t<button><span className=\"label\">{ withButtonText }</span></button>\n+\t\t\t\t\t)}\n+\t\t\t\t</div>\n \t\t\t</div>\n \t\t</div>\n \t);\n };\n"
+                },
+                {
+                    "date": 1694350240663,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,19 +23,21 @@\n \tlabelText,\n }) => {\n \tconst inputRef = useRef();\n \treturn (\n-\t\t<div>\n+\t\t<div\n+\t\t\tclassName={cx('wrap', {\n+\t\t\t\t'input-disabled': disabled,\n+\t\t\t\t'input-readonly': readonly,\n+\t\t\t\t'input-error-wrap': error,\n+\t\t\t})}\n+\t\t\tstyle={{ '--spacing': `${spacing}px` }}\n+\t\t>\n \t\t\t{isLabel && labelText (\n \t\t\t\t<label for={id}>{labelText}</label>\n \t\t\t)}\n \t\t\t<div\n-\t\t\t\tclassName={cx('input-wrap', {\n-\t\t\t\t\t'input-disabled': disabled,\n-\t\t\t\t\t'input-readonly': readonly,\n-\t\t\t\t\t'input-error-wrap': error,\n-\t\t\t\t})}\n-\t\t\t\tstyle={{ '--spacing': `${spacing}px` }}\n+\t\t\t\tclassName={cx('input-wrap')}\n \t\t\t>\t\n \t\t\t\t<input\n \t\t\t\t\tid={id}\n \t\t\t\t\tvalue={value}\n"
+                },
+                {
+                    "date": 1694350259800,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n \terror = false,\n \tspacing = \"0\",\n \tisWithButton = false,\n \twithButtonText,\n-\tisLabel = true,\n+\tisLabel = false,\n \tlabelText,\n }) => {\n \tconst inputRef = useRef();\n \treturn (\n"
+                },
+                {
+                    "date": 1694350660783,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,9 +35,9 @@\n \t\t\t{isLabel && labelText (\n \t\t\t\t<label for={id}>{labelText}</label>\n \t\t\t)}\n \t\t\t<div\n-\t\t\t\tclassName={cx('input-wrap')}\n+\t\t\t\tclassName={cx('input-box')}\n \t\t\t>\t\n \t\t\t\t<input\n \t\t\t\t\tid={id}\n \t\t\t\t\tvalue={value}\n"
+                },
+                {
+                    "date": 1694350681069,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,9 +35,9 @@\n \t\t\t{isLabel && labelText (\n \t\t\t\t<label for={id}>{labelText}</label>\n \t\t\t)}\n \t\t\t<div\n-\t\t\t\tclassName={cx('input-box')}\n+\t\t\t\tclassName={cx('input-wrap')}\n \t\t\t>\t\n \t\t\t\t<input\n \t\t\t\t\tid={id}\n \t\t\t\t\tvalue={value}\n"
+                },
+                {
+                    "date": 1694351027510,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n \tvalue,\n \tsetValue,\n \tplaceholder,\n \tonChange,\n-\tdisabled = false,\n+\tdisabled = true,\n \treadonly = false,\n \tmaxLength,\n \ttype = \"text\",\n \terror = false,\n"
+                },
+                {
+                    "date": 1694351205343,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n \tvalue,\n \tsetValue,\n \tplaceholder,\n \tonChange,\n-\tdisabled = true,\n+\tdisabled = false,\n \treadonly = false,\n \tmaxLength,\n \ttype = \"text\",\n \terror = false,\n"
+                },
+                {
+                    "date": 1694351750723,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -50,11 +50,11 @@\n \t\t\t\t\tmaxLength={maxLength}\n \t\t\t\t>\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n-\t\t\t\t\t{!disabled && !readonly && value && (\n-\t\t\t\t\t\t<ResetButton inputRef={inputRef} setValue={setValue} />\n-\t\t\t\t\t)}\n+\t\t\t\t\t<ResetButton inputRef={inputRef} setValue={setValue} />\n+\t\t\t\t\t{/* {!disabled && !readonly && value && (\n+\t\t\t\t\t)} */}\n \t\t\t\t\t{isWithButton && (\n \t\t\t\t\t\t<button><span className=\"label\">{ withButtonText }</span></button>\n \t\t\t\t\t)}\n \t\t\t\t</div>\n"
+                },
+                {
+                    "date": 1694351798119,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -50,11 +50,11 @@\n \t\t\t\t\tmaxLength={maxLength}\n \t\t\t\t>\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n-\t\t\t\t\t<ResetButton inputRef={inputRef} setValue={setValue} />\n-\t\t\t\t\t{/* {!disabled && !readonly && value && (\n-\t\t\t\t\t)} */}\n+\t\t\t\t\t{!disabled && !readonly && (\n+\t\t\t\t\t\t<ResetButton inputRef={inputRef} setValue={setValue} />\n+\t\t\t\t\t)}\n \t\t\t\t\t{isWithButton && (\n \t\t\t\t\t\t<button><span className=\"label\">{ withButtonText }</span></button>\n \t\t\t\t\t)}\n \t\t\t\t</div>\n"
+                },
+                {
+                    "date": 1694351816359,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -50,9 +50,9 @@\n \t\t\t\t\tmaxLength={maxLength}\n \t\t\t\t>\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n-\t\t\t\t\t{!disabled && !readonly && (\n+\t\t\t\t\t{!disabled && !readonly && value (\n \t\t\t\t\t\t<ResetButton inputRef={inputRef} setValue={setValue} />\n \t\t\t\t\t)}\n \t\t\t\t\t{isWithButton && (\n \t\t\t\t\t\t<button><span className=\"label\">{ withButtonText }</span></button>\n"
+                },
+                {
+                    "date": 1694351840892,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -50,9 +50,9 @@\n \t\t\t\t\tmaxLength={maxLength}\n \t\t\t\t>\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n-\t\t\t\t\t{!disabled && !readonly && value (\n+\t\t\t\t\t{!disabled && !readonly && value && (\n \t\t\t\t\t\t<ResetButton inputRef={inputRef} setValue={setValue} />\n \t\t\t\t\t)}\n \t\t\t\t\t{isWithButton && (\n \t\t\t\t\t\t<button><span className=\"label\">{ withButtonText }</span></button>\n"
+                },
+                {
+                    "date": 1694351969247,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,9 +31,9 @@\n \t\t\t\t'input-error-wrap': error,\n \t\t\t})}\n \t\t\tstyle={{ '--spacing': `${spacing}px` }}\n \t\t>\n-\t\t\t{isLabel && labelText (\n+\t\t\t{isLabel && labelText && (\n \t\t\t\t<label for={id}>{labelText}</label>\n \t\t\t)}\n \t\t\t<div\n \t\t\t\tclassName={cx('input-wrap')}\n"
+                },
+                {
+                    "date": 1694351990672,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,9 +32,9 @@\n \t\t\t})}\n \t\t\tstyle={{ '--spacing': `${spacing}px` }}\n \t\t>\n \t\t\t{isLabel && labelText && (\n-\t\t\t\t<label for={id}>{labelText}</label>\n+\t\t\t\t<label htmlFor={id}>{labelText}</label>\n \t\t\t)}\n \t\t\t<div\n \t\t\t\tclassName={cx('input-wrap')}\n \t\t\t>\t\n"
+                },
+                {
+                    "date": 1694352621376,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,9 +32,11 @@\n \t\t\t})}\n \t\t\tstyle={{ '--spacing': `${spacing}px` }}\n \t\t>\n \t\t\t{isLabel && labelText && (\n-\t\t\t\t<label htmlFor={id}>{labelText}</label>\n+\t\t\t\t<div className={cx('input-label')}>\n+\t\t\t\t\t<label htmlFor={id}>{labelText}</label>\n+\t\t\t\t</div>\n \t\t\t)}\n \t\t\t<div\n \t\t\t\tclassName={cx('input-wrap')}\n \t\t\t>\t\n"
+                },
+                {
+                    "date": 1694352741036,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,11 +32,9 @@\n \t\t\t})}\n \t\t\tstyle={{ '--spacing': `${spacing}px` }}\n \t\t>\n \t\t\t{isLabel && labelText && (\n-\t\t\t\t<div className={cx('input-label')}>\n-\t\t\t\t\t<label htmlFor={id}>{labelText}</label>\n-\t\t\t\t</div>\n+\t\t\t\t<label htmlFor={id}>{labelText}</label>\n \t\t\t)}\n \t\t\t<div\n \t\t\t\tclassName={cx('input-wrap')}\n \t\t\t>\t\n"
+                },
+                {
+                    "date": 1694354284357,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,8 +20,9 @@\n \tisWithButton = false,\n \twithButtonText,\n \tisLabel = false,\n \tlabelText,\n+\tmessage,\n }) => {\n \tconst inputRef = useRef();\n \treturn (\n \t\t<div\n@@ -58,8 +59,11 @@\n \t\t\t\t\t\t<button><span className=\"label\">{ withButtonText }</span></button>\n \t\t\t\t\t)}\n \t\t\t\t</div>\n \t\t\t</div>\n+\t\t\t{error && message && (\n+\t\t\t\t<p className={`${InputStyle['message']}`}>{ messsage }</p>\n+\t\t\t)}\n \t\t</div>\n \t);\n };\n \n@@ -78,7 +82,8 @@\n \terror: PropTypes.bool,\n \tspacing: PropTypes.string,\n \tisLabel: PropTypes.bool,\n \tlabelText: PropTypes.string,\n+\tmessage: PropTypes.string,\n };\n \n export default InputBase;\n"
+                },
+                {
+                    "date": 1694354293983,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -60,9 +60,9 @@\n \t\t\t\t\t)}\n \t\t\t\t</div>\n \t\t\t</div>\n \t\t\t{error && message && (\n-\t\t\t\t<p className={`${InputStyle['message']}`}>{ messsage }</p>\n+\t\t\t\t<p className={`${InputStyle['message']}`}>{ message }</p>\n \t\t\t)}\n \t\t</div>\n \t);\n };\n"
+                },
+                {
+                    "date": 1694354418984,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -59,9 +59,9 @@\n \t\t\t\t\t\t<button><span className=\"label\">{ withButtonText }</span></button>\n \t\t\t\t\t)}\n \t\t\t\t</div>\n \t\t\t</div>\n-\t\t\t{error && message && (\n+\t\t\t{error && (\n \t\t\t\t<p className={`${InputStyle['message']}`}>{ message }</p>\n \t\t\t)}\n \t\t</div>\n \t);\n"
+                },
+                {
+                    "date": 1694354583075,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,9 +40,9 @@\n \t\t\t\tclassName={cx('input-wrap')}\n \t\t\t>\t\n \t\t\t\t<input\n \t\t\t\t\tid={id}\n-\t\t\t\t\tvalue={value}\n+\t\t\t\t\tdefaultvalue={value}\n \t\t\t\t\ttype={type}\n \t\t\t\t\tclassName={InputStyle['input']}\n \t\t\t\t\tplaceholder={placeholder}\n \t\t\t\t\tdisabled={disabled}\n"
+                },
+                {
+                    "date": 1694354616668,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -68,9 +68,9 @@\n };\n \n InputBase.propTypes = {\n \tid: PropTypes.string,\n-\tvalue: PropTypes.string,\n+\tdefaultvalue: PropTypes.string,\n \tsetValue: PropTypes.func,\n \tplaceholder: PropTypes.string,\n \tonChange: PropTypes.func,\n \tdisabled: PropTypes.bool,\n"
+                },
+                {
+                    "date": 1694354644535,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,10 +26,10 @@\n \tconst inputRef = useRef();\n \treturn (\n \t\t<div\n \t\t\tclassName={cx('wrap', {\n-\t\t\t\t'input-disabled': disabled,\n-\t\t\t\t'input-readonly': readonly,\n+\t\t\t\t'input-disabled-wrap': disabled,\n+\t\t\t\t'input-readonly-wrap': readonly,\n \t\t\t\t'input-error-wrap': error,\n \t\t\t})}\n \t\t\tstyle={{ '--spacing': `${spacing}px` }}\n \t\t>\n"
+                },
+                {
+                    "date": 1694354662744,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,9 +40,9 @@\n \t\t\t\tclassName={cx('input-wrap')}\n \t\t\t>\t\n \t\t\t\t<input\n \t\t\t\t\tid={id}\n-\t\t\t\t\tdefaultvalue={value}\n+\t\t\t\t\tdefaultValue={value}\n \t\t\t\t\ttype={type}\n \t\t\t\t\tclassName={InputStyle['input']}\n \t\t\t\t\tplaceholder={placeholder}\n \t\t\t\t\tdisabled={disabled}\n"
+                },
+                {
+                    "date": 1694355488326,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,8 +39,9 @@\n \t\t\t<div\n \t\t\t\tclassName={cx('input-wrap')}\n \t\t\t>\t\n \t\t\t\t<input\n+\t\t\t\t\tref={inputRef}\n \t\t\t\t\tid={id}\n \t\t\t\t\tdefaultValue={value}\n \t\t\t\t\ttype={type}\n \t\t\t\t\tclassName={InputStyle['input']}\n"
+                },
+                {
+                    "date": 1694355626849,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,8 +52,9 @@\n \t\t\t\t\tmaxLength={maxLength}\n \t\t\t\t>\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n+\t\t\t\t\t<ResetButton inputRef={inputRef} setValue={setValue} />\n \t\t\t\t\t{!disabled && !readonly && value && (\n \t\t\t\t\t\t<ResetButton inputRef={inputRef} setValue={setValue} />\n \t\t\t\t\t)}\n \t\t\t\t\t{isWithButton && (\n"
+                },
+                {
+                    "date": 1694356451251,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,9 +52,8 @@\n \t\t\t\t\tmaxLength={maxLength}\n \t\t\t\t>\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n-\t\t\t\t\t<ResetButton inputRef={inputRef} setValue={setValue} />\n \t\t\t\t\t{!disabled && !readonly && value && (\n \t\t\t\t\t\t<ResetButton inputRef={inputRef} setValue={setValue} />\n \t\t\t\t\t)}\n \t\t\t\t\t{isWithButton && (\n"
+                },
+                {
+                    "date": 1694356468124,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,9 +52,9 @@\n \t\t\t\t\tmaxLength={maxLength}\n \t\t\t\t>\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n-\t\t\t\t\t{!disabled && !readonly && value && (\n+\t\t\t\t\t{!disabled && !readonly && (\n \t\t\t\t\t\t<ResetButton inputRef={inputRef} setValue={setValue} />\n \t\t\t\t\t)}\n \t\t\t\t\t{isWithButton && (\n \t\t\t\t\t\t<button><span className=\"label\">{ withButtonText }</span></button>\n"
+                },
+                {
+                    "date": 1694356498575,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -53,9 +53,9 @@\n \t\t\t\t>\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n \t\t\t\t\t{!disabled && !readonly && (\n-\t\t\t\t\t\t<ResetButton inputRef={inputRef} setValue={setValue} />\n+\t\t\t\t\t\t<ResetButton inputRef={inputRef} />\n \t\t\t\t\t)}\n \t\t\t\t\t{isWithButton && (\n \t\t\t\t\t\t<button><span className=\"label\">{ withButtonText }</span></button>\n \t\t\t\t\t)}\n"
+                },
+                {
+                    "date": 1694356509484,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -53,9 +53,9 @@\n \t\t\t\t>\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n \t\t\t\t\t{!disabled && !readonly && (\n-\t\t\t\t\t\t<ResetButton inputRef={inputRef} />\n+\t\t\t\t\t\t<ResetButton inputRef={inputRef} setValue={setValue} />\n \t\t\t\t\t)}\n \t\t\t\t\t{isWithButton && (\n \t\t\t\t\t\t<button><span className=\"label\">{ withButtonText }</span></button>\n \t\t\t\t\t)}\n"
+                },
+                {
+                    "date": 1694356820068,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,10 +52,16 @@\n \t\t\t\t\tmaxLength={maxLength}\n \t\t\t\t>\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n-\t\t\t\t\t{!disabled && !readonly && (\n-\t\t\t\t\t\t<ResetButton inputRef={inputRef} setValue={setValue} />\n+\t\t\t\t\t{!disabled && !readonly && value && value.length > 0 && (\n+\t\t\t\t\t\t<ResetButton\n+\t\t\t\t\t\t\tonClick={(evt) => {\n+\t\t\t\t\t\t\t\tif (inputRef.current) {\n+\t\t\t\t\t\t\t\t\tinputRef.current.focus();\n+\t\t\t\t\t\t\t\t}\n+\t\t\t\t\t\t\t}}\n+\t\t\t\t\t\t/>\n \t\t\t\t\t)}\n \t\t\t\t\t{isWithButton && (\n \t\t\t\t\t\t<button><span className=\"label\">{ withButtonText }</span></button>\n \t\t\t\t\t)}\n"
+                },
+                {
+                    "date": 1694356855209,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -57,8 +57,9 @@\n \t\t\t\t\t\t<ResetButton\n \t\t\t\t\t\t\tonClick={(evt) => {\n \t\t\t\t\t\t\t\tif (inputRef.current) {\n \t\t\t\t\t\t\t\t\tinputRef.current.focus();\n+\t\t\t\t\t\t\t\t\tsetValue('');\n \t\t\t\t\t\t\t\t}\n \t\t\t\t\t\t\t}}\n \t\t\t\t\t\t/>\n \t\t\t\t\t)}\n"
+                },
+                {
+                    "date": 1694356952626,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -55,12 +55,11 @@\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n \t\t\t\t\t{!disabled && !readonly && value && value.length > 0 && (\n \t\t\t\t\t\t<ResetButton\n \t\t\t\t\t\t\tonClick={(evt) => {\n-\t\t\t\t\t\t\t\tif (inputRef.current) {\n-\t\t\t\t\t\t\t\t\tinputRef.current.focus();\n-\t\t\t\t\t\t\t\t\tsetValue('');\n-\t\t\t\t\t\t\t\t}\n+\t\t\t\t\t\t\t\tinputRef.current.value = '';\n+\t\t\t\t\t\t\t\tinputRef.current.focus();\n+\t\t\t\t\t\t\t\tsetValue('');\n \t\t\t\t\t\t\t}}\n \t\t\t\t\t\t/>\n \t\t\t\t\t)}\n \t\t\t\t\t{isWithButton && (\n"
+                },
+                {
+                    "date": 1694357152854,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,8 @@\n const cx = classNames.bind(InputStyle);\n const InputBase = ({\n \tid,\n \tvalue,\n-\tsetValue,\n \tplaceholder,\n \tonChange,\n \tdisabled = false,\n \treadonly = false,\n@@ -54,8 +53,9 @@\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n \t\t\t\t\t{!disabled && !readonly && value && value.length > 0 && (\n \t\t\t\t\t\t<ResetButton\n+\t\t\t\t\t\t\tinputRef={inputRef}\n \t\t\t\t\t\t\tonClick={(evt) => {\n \t\t\t\t\t\t\t\tinputRef.current.value = '';\n \t\t\t\t\t\t\t\tinputRef.current.focus();\n \t\t\t\t\t\t\t\tsetValue('');\n"
+                },
+                {
+                    "date": 1694357165984,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,8 +22,9 @@\n \tlabelText,\n \tmessage,\n }) => {\n \tconst inputRef = useRef();\n+\tconst value\n \treturn (\n \t\t<div\n \t\t\tclassName={cx('wrap', {\n \t\t\t\t'input-disabled-wrap': disabled,\n@@ -76,9 +77,8 @@\n \n InputBase.propTypes = {\n \tid: PropTypes.string,\n \tdefaultvalue: PropTypes.string,\n-\tsetValue: PropTypes.func,\n \tplaceholder: PropTypes.string,\n \tonChange: PropTypes.func,\n \tdisabled: PropTypes.bool,\n \treadonly: PropTypes.bool,\n"
+                },
+                {
+                    "date": 1694357192752,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import PropTypes from 'prop-types';\n import classNames from 'classnames/bind';\n-import { useRef } from 'react';\n+import { useRef, useState } from 'react';\n import ResetButton from './button/ResetButton';\n import InputStyle from './Input.module.scss';\n \n const cx = classNames.bind(InputStyle);\n@@ -22,9 +22,9 @@\n \tlabelText,\n \tmessage,\n }) => {\n \tconst inputRef = useRef();\n-\tconst value\n+\tconst [value,setValue] = useState(value);\n \treturn (\n \t\t<div\n \t\t\tclassName={cx('wrap', {\n \t\t\t\t'input-disabled-wrap': disabled,\n"
+                },
+                {
+                    "date": 1694357341595,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n \tlabelText,\n \tmessage,\n }) => {\n \tconst inputRef = useRef();\n-\tconst [value,setValue] = useState(value);\n+\tconst [inputValue,setInputValue] = useState(value);\n \treturn (\n \t\t<div\n \t\t\tclassName={cx('wrap', {\n \t\t\t\t'input-disabled-wrap': disabled,\n@@ -41,9 +41,9 @@\n \t\t\t>\t\n \t\t\t\t<input\n \t\t\t\t\tref={inputRef}\n \t\t\t\t\tid={id}\n-\t\t\t\t\tdefaultValue={value}\n+\t\t\t\t\tdefaultValue={inputValue}\n \t\t\t\t\ttype={type}\n \t\t\t\t\tclassName={InputStyle['input']}\n \t\t\t\t\tplaceholder={placeholder}\n \t\t\t\t\tdisabled={disabled}\n@@ -58,9 +58,9 @@\n \t\t\t\t\t\t\tinputRef={inputRef}\n \t\t\t\t\t\t\tonClick={(evt) => {\n \t\t\t\t\t\t\t\tinputRef.current.value = '';\n \t\t\t\t\t\t\t\tinputRef.current.focus();\n-\t\t\t\t\t\t\t\tsetValue('');\n+\t\t\t\t\t\t\t\tsetInputValue('');\n \t\t\t\t\t\t\t}}\n \t\t\t\t\t\t/>\n \t\t\t\t\t)}\n \t\t\t\t\t{isWithButton && (\n"
+                },
+                {
+                    "date": 1694357365471,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,9 +52,9 @@\n \t\t\t\t\tmaxLength={maxLength}\n \t\t\t\t>\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n-\t\t\t\t\t{!disabled && !readonly && value && value.length > 0 && (\n+\t\t\t\t\t{!disabled && !readonly && value.length > 0 && (\n \t\t\t\t\t\t<ResetButton\n \t\t\t\t\t\t\tinputRef={inputRef}\n \t\t\t\t\t\t\tonClick={(evt) => {\n \t\t\t\t\t\t\t\tinputRef.current.value = '';\n"
+                },
+                {
+                    "date": 1694357383233,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,9 +52,9 @@\n \t\t\t\t\tmaxLength={maxLength}\n \t\t\t\t>\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n-\t\t\t\t\t{!disabled && !readonly && value.length > 0 && (\n+\t\t\t\t\t{!disabled && !readonly && (\n \t\t\t\t\t\t<ResetButton\n \t\t\t\t\t\t\tinputRef={inputRef}\n \t\t\t\t\t\t\tonClick={(evt) => {\n \t\t\t\t\t\t\t\tinputRef.current.value = '';\n"
+                },
+                {
+                    "date": 1694357408515,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,9 +52,9 @@\n \t\t\t\t\tmaxLength={maxLength}\n \t\t\t\t>\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n-\t\t\t\t\t{!disabled && !readonly && (\n+\t\t\t\t\t{!disabled && !readonly && (value.length > 0) && (\n \t\t\t\t\t\t<ResetButton\n \t\t\t\t\t\t\tinputRef={inputRef}\n \t\t\t\t\t\t\tonClick={(evt) => {\n \t\t\t\t\t\t\t\tinputRef.current.value = '';\n"
+                },
+                {
+                    "date": 1694357424718,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,9 +52,9 @@\n \t\t\t\t\tmaxLength={maxLength}\n \t\t\t\t>\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n-\t\t\t\t\t{!disabled && !readonly && (value.length > 0) && (\n+\t\t\t\t\t{!disabled && !readonly && value && value.length > 0 && (\n \t\t\t\t\t\t<ResetButton\n \t\t\t\t\t\t\tinputRef={inputRef}\n \t\t\t\t\t\t\tonClick={(evt) => {\n \t\t\t\t\t\t\t\tinputRef.current.value = '';\n"
+                },
+                {
+                    "date": 1694357458124,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,9 +52,9 @@\n \t\t\t\t\tmaxLength={maxLength}\n \t\t\t\t>\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n-\t\t\t\t\t{!disabled && !readonly && value && value.length > 0 && (\n+\t\t\t\t\t{!disabled && !readonly && (\n \t\t\t\t\t\t<ResetButton\n \t\t\t\t\t\t\tinputRef={inputRef}\n \t\t\t\t\t\t\tonClick={(evt) => {\n \t\t\t\t\t\t\t\tinputRef.current.value = '';\n"
+                },
+                {
+                    "date": 1694357487420,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,9 +52,9 @@\n \t\t\t\t\tmaxLength={maxLength}\n \t\t\t\t>\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n-\t\t\t\t\t{!disabled && !readonly && (\n+\t\t\t\t\t{!disabled && !readonly && value.length > 0 &&(\n \t\t\t\t\t\t<ResetButton\n \t\t\t\t\t\t\tinputRef={inputRef}\n \t\t\t\t\t\t\tonClick={(evt) => {\n \t\t\t\t\t\t\t\tinputRef.current.value = '';\n"
+                },
+                {
+                    "date": 1694357498923,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,9 +52,9 @@\n \t\t\t\t\tmaxLength={maxLength}\n \t\t\t\t>\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n-\t\t\t\t\t{!disabled && !readonly && value.length > 0 &&(\n+\t\t\t\t\t{!disabled && !readonly && value &&(\n \t\t\t\t\t\t<ResetButton\n \t\t\t\t\t\t\tinputRef={inputRef}\n \t\t\t\t\t\t\tonClick={(evt) => {\n \t\t\t\t\t\t\t\tinputRef.current.value = '';\n"
+                },
+                {
+                    "date": 1694357517474,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,9 +52,9 @@\n \t\t\t\t\tmaxLength={maxLength}\n \t\t\t\t>\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n-\t\t\t\t\t{!disabled && !readonly && value &&(\n+\t\t\t\t\t{!disabled && !readonly && value && value.length > 0 && (\n \t\t\t\t\t\t<ResetButton\n \t\t\t\t\t\t\tinputRef={inputRef}\n \t\t\t\t\t\t\tonClick={(evt) => {\n \t\t\t\t\t\t\t\tinputRef.current.value = '';\n"
+                },
+                {
+                    "date": 1694357555893,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,9 +52,9 @@\n \t\t\t\t\tmaxLength={maxLength}\n \t\t\t\t>\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n-\t\t\t\t\t{!disabled && !readonly && value && value.length > 0 && (\n+\t\t\t\t\t{!disabled && !readonly (\n \t\t\t\t\t\t<ResetButton\n \t\t\t\t\t\t\tinputRef={inputRef}\n \t\t\t\t\t\t\tonClick={(evt) => {\n \t\t\t\t\t\t\t\tinputRef.current.value = '';\n"
+                },
+                {
+                    "date": 1694357561964,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,9 +52,9 @@\n \t\t\t\t\tmaxLength={maxLength}\n \t\t\t\t>\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n-\t\t\t\t\t{!disabled && !readonly (\n+\t\t\t\t\t{!disabled && !readonly && (\n \t\t\t\t\t\t<ResetButton\n \t\t\t\t\t\t\tinputRef={inputRef}\n \t\t\t\t\t\t\tonClick={(evt) => {\n \t\t\t\t\t\t\t\tinputRef.current.value = '';\n"
+                },
+                {
+                    "date": 1694357597908,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,9 +52,9 @@\n \t\t\t\t\tmaxLength={maxLength}\n \t\t\t\t>\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n-\t\t\t\t\t{!disabled && !readonly && (\n+\t\t\t\t\t{!disabled && !readonly && value && (\n \t\t\t\t\t\t<ResetButton\n \t\t\t\t\t\t\tinputRef={inputRef}\n \t\t\t\t\t\t\tonClick={(evt) => {\n \t\t\t\t\t\t\t\tinputRef.current.value = '';\n"
+                },
+                {
+                    "date": 1694357644381,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -55,9 +55,9 @@\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n \t\t\t\t\t{!disabled && !readonly && value && (\n \t\t\t\t\t\t<ResetButton\n \t\t\t\t\t\t\tinputRef={inputRef}\n-\t\t\t\t\t\t\tonClick={(evt) => {\n+\t\t\t\t\t\t\tonKeyUp={(evt) => {\n \t\t\t\t\t\t\t\tinputRef.current.value = '';\n \t\t\t\t\t\t\t\tinputRef.current.focus();\n \t\t\t\t\t\t\t\tsetInputValue('');\n \t\t\t\t\t\t\t}}\n"
+                },
+                {
+                    "date": 1694357735374,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,9 +52,9 @@\n \t\t\t\t\tmaxLength={maxLength}\n \t\t\t\t>\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n-\t\t\t\t\t{!disabled && !readonly && value && (\n+\t\t\t\t\t{!disabled && !readonly && (\n \t\t\t\t\t\t<ResetButton\n \t\t\t\t\t\t\tinputRef={inputRef}\n \t\t\t\t\t\t\tonKeyUp={(evt) => {\n \t\t\t\t\t\t\t\tinputRef.current.value = '';\n"
+                },
+                {
+                    "date": 1694357756262,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -55,9 +55,9 @@\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n \t\t\t\t\t{!disabled && !readonly && (\n \t\t\t\t\t\t<ResetButton\n \t\t\t\t\t\t\tinputRef={inputRef}\n-\t\t\t\t\t\t\tonKeyUp={(evt) => {\n+\t\t\t\t\t\t\tonClick={(evt) => {\n \t\t\t\t\t\t\t\tinputRef.current.value = '';\n \t\t\t\t\t\t\t\tinputRef.current.focus();\n \t\t\t\t\t\t\t\tsetInputValue('');\n \t\t\t\t\t\t\t}}\n"
+                },
+                {
+                    "date": 1694357798445,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -57,8 +57,9 @@\n \t\t\t\t\t\t<ResetButton\n \t\t\t\t\t\t\tinputRef={inputRef}\n \t\t\t\t\t\t\tonClick={(evt) => {\n \t\t\t\t\t\t\t\tinputRef.current.value = '';\n+\t\t\t\t\t\t\t\tconsole.log(inputRef.current.value);\n \t\t\t\t\t\t\t\tinputRef.current.focus();\n \t\t\t\t\t\t\t\tsetInputValue('');\n \t\t\t\t\t\t\t}}\n \t\t\t\t\t\t/>\n"
+                },
+                {
+                    "date": 1694357818010,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -57,9 +57,8 @@\n \t\t\t\t\t\t<ResetButton\n \t\t\t\t\t\t\tinputRef={inputRef}\n \t\t\t\t\t\t\tonClick={(evt) => {\n \t\t\t\t\t\t\t\tinputRef.current.value = '';\n-\t\t\t\t\t\t\t\tconsole.log(inputRef.current.value);\n \t\t\t\t\t\t\t\tinputRef.current.focus();\n \t\t\t\t\t\t\t\tsetInputValue('');\n \t\t\t\t\t\t\t}}\n \t\t\t\t\t\t/>\n"
+                },
+                {
+                    "date": 1694358493752,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -47,9 +47,11 @@\n \t\t\t\t\tclassName={InputStyle['input']}\n \t\t\t\t\tplaceholder={placeholder}\n \t\t\t\t\tdisabled={disabled}\n \t\t\t\t\treadOnly={readonly}\n-\t\t\t\t\tonChange={onChange}\n+\t\t\t\t\tonChange={(evt) => {\n+\t\t\t\t\t\tsetInputValue(inputValue)\n+\t\t\t\t\t}}\n \t\t\t\t\tmaxLength={maxLength}\n \t\t\t\t>\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n"
+                },
+                {
+                    "date": 1694358545862,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -54,9 +54,9 @@\n \t\t\t\t\tmaxLength={maxLength}\n \t\t\t\t>\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n-\t\t\t\t\t{!disabled && !readonly && (\n+\t\t\t\t\t{!disabled && !readonly && value && (\n \t\t\t\t\t\t<ResetButton\n \t\t\t\t\t\t\tinputRef={inputRef}\n \t\t\t\t\t\t\tonClick={(evt) => {\n \t\t\t\t\t\t\t\tinputRef.current.value = '';\n"
+                },
+                {
+                    "date": 1694358554287,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -47,11 +47,9 @@\n \t\t\t\t\tclassName={InputStyle['input']}\n \t\t\t\t\tplaceholder={placeholder}\n \t\t\t\t\tdisabled={disabled}\n \t\t\t\t\treadOnly={readonly}\n-\t\t\t\t\tonChange={(evt) => {\n-\t\t\t\t\t\tsetInputValue(inputValue)\n-\t\t\t\t\t}}\n+\t\t\t\t\tonChange={onChange}\n \t\t\t\t\tmaxLength={maxLength}\n \t\t\t\t>\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n"
+                },
+                {
+                    "date": 1694358610820,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -47,9 +47,11 @@\n \t\t\t\t\tclassName={InputStyle['input']}\n \t\t\t\t\tplaceholder={placeholder}\n \t\t\t\t\tdisabled={disabled}\n \t\t\t\t\treadOnly={readonly}\n-\t\t\t\t\tonChange={onChange}\n+\t\t\t\t\tonChange={(evt) => {\n+\t\t\t\t\t\tsetInputValue(inputValue)\n+\t\t\t\t\t}}\n \t\t\t\t\tmaxLength={maxLength}\n \t\t\t\t>\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n"
+                },
+                {
+                    "date": 1694358627538,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -48,9 +48,9 @@\n \t\t\t\t\tplaceholder={placeholder}\n \t\t\t\t\tdisabled={disabled}\n \t\t\t\t\treadOnly={readonly}\n \t\t\t\t\tonChange={(evt) => {\n-\t\t\t\t\t\tsetInputValue(inputValue)\n+\t\t\t\t\t\tsetInputValue(value)\n \t\t\t\t\t}}\n \t\t\t\t\tmaxLength={maxLength}\n \t\t\t\t>\n \t\t\t\t</input>\n"
+                },
+                {
+                    "date": 1694358648314,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -47,11 +47,9 @@\n \t\t\t\t\tclassName={InputStyle['input']}\n \t\t\t\t\tplaceholder={placeholder}\n \t\t\t\t\tdisabled={disabled}\n \t\t\t\t\treadOnly={readonly}\n-\t\t\t\t\tonChange={(evt) => {\n-\t\t\t\t\t\tsetInputValue(value)\n-\t\t\t\t\t}}\n+\t\t\t\t\tonChange={onChange}\n \t\t\t\t\tmaxLength={maxLength}\n \t\t\t\t>\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n"
+                },
+                {
+                    "date": 1694358678999,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,9 +52,9 @@\n \t\t\t\t\tmaxLength={maxLength}\n \t\t\t\t>\n \t\t\t\t</input>\n \t\t\t\t<div className={`${InputStyle['buttons']}`}>\n-\t\t\t\t\t{!disabled && !readonly && value && (\n+\t\t\t\t\t{!disabled && !readonly && (\n \t\t\t\t\t\t<ResetButton\n \t\t\t\t\t\t\tinputRef={inputRef}\n \t\t\t\t\t\t\tonClick={(evt) => {\n \t\t\t\t\t\t\t\tinputRef.current.value = '';\n"
+                }
+            ],
+            "date": 1694344169587,
+            "name": "Commit-0",
+            "content": "import PropTypes from 'prop-types';\nimport classNames from 'classnames/bind';\nimport InputStyle from './InputBase.module.scss';\n\nconst Input = ({\n\ttype, spacing= '0', placeholder, disabled, readonly, error=false}) => {\n\tconst cx = classNames.bind(InputStyle);\n\treturn (\n\t\t<div\n\t\t\tclassName={cx('form-set')}\n\t\t\tstyle={{ '--spacing': `${spacing}px` }}\n\t\t>\n\t\t\t<input\n\t\t\t\ttype={type}\n\t\t\t\tclassName={InputStyle['input']}\n\t\t\t\tplaceholder={placeholder}\n\t\t\t\tdisabled={disabled}\n\t\t\t\treadonly={readonly}\n\t\t\t>\n\t\t\t</input>\n\t\t</div>\n\t);\n};\n\nInput.propTypes = {\n\ttype: PropTypes.string,\n\tchildren: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),\n\tspacing: PropTypes.string,\n\tdisabled: PropTypes.bool,\n\treadonly: PropTypes.bool,\n\terror:PropTypes.bool,\n};\n\nexport default Input;\n"
+        }
+    ]
+}

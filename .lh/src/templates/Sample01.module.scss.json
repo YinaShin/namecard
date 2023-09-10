@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/templates/Sample01.module.scss",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1694366462330,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1694366472408,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,1 @@\n \n-.sample01 {\n-    background: red;\n-}\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1694366462330,
+            "name": "Commit-0",
+            "content": "\n.sample01 {\n    background: red;\n}"
+        }
+    ]
+}

@@ -1,0 +1,34 @@
+{
+    "sourceFile": "src/components/Input/button/ResetButton.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1694355464387,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1694356773096,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,22 +1,20 @@\n import PropTypes from 'prop-types';\n import InputStyle from '../Input.module.scss';\n \n-const ResetButton = ({ inputRef, setValue }) => {\n-\tconst onClick = () => {\n-\t\tinputRef.current.value = '';\n-\t\tinputRef.current.focus();\n-\t\tsetValue('');\n-\t};\n-\n+const ResetButton = ({ onClick }) => {\n+\t\n \treturn (\n-\t\t<button className={`${InputStyle['reset-button']}`} onClick={onClick}>\n+\t\t<button \n+\t\t\tclassName={`${InputStyle['reset-button']}`} \n+\t\t\tonClick={(evt) => {\n+\t\t\t\tonClick && onClick(evt);}}\n+\t\t\t>\n \t\t\t<span className=\"hidden\">초기화</span>\n \t\t</button>\n \t);\n };\n \n ResetButton.propTypes = {\n-\tinputRef: PropTypes.object,\n \tsetValue: PropTypes.func,\n };\n export default ResetButton;\n"
+                },
+                {
+                    "date": 1694357662891,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,14 +1,14 @@\n import PropTypes from 'prop-types';\n import InputStyle from '../Input.module.scss';\n \n-const ResetButton = ({ onClick }) => {\n+const ResetButton = ({ onKeyup }) => {\n \t\n \treturn (\n \t\t<button \n \t\t\tclassName={`${InputStyle['reset-button']}`} \n-\t\t\tonClick={(evt) => {\n-\t\t\t\tonClick && onClick(evt);}}\n+\t\t\tonKeyup={(evt) => {\n+\t\t\t\tonKeyup && onKeyup(evt);}}\n \t\t\t>\n \t\t\t<span className=\"hidden\">초기화</span>\n \t\t</button>\n \t);\n"
+                },
+                {
+                    "date": 1694357704366,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,20 +1,20 @@\n import PropTypes from 'prop-types';\n import InputStyle from '../Input.module.scss';\n \n-const ResetButton = ({ onKeyup }) => {\n+const ResetButton = ({ onKeyUp }) => {\n \t\n \treturn (\n \t\t<button \n \t\t\tclassName={`${InputStyle['reset-button']}`} \n-\t\t\tonKeyup={(evt) => {\n-\t\t\t\tonKeyup && onKeyup(evt);}}\n+\t\t\tonKeyUp={(evt) => {\n+\t\t\t\tonKeyUp && onKeyUp(evt);}}\n \t\t\t>\n \t\t\t<span className=\"hidden\">초기화</span>\n \t\t</button>\n \t);\n };\n \n ResetButton.propTypes = {\n-\tsetValue: PropTypes.func,\n+\tonKeyUp: PropTypes.func,\n };\n export default ResetButton;\n"
+                },
+                {
+                    "date": 1694357768722,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,20 +1,20 @@\n import PropTypes from 'prop-types';\n import InputStyle from '../Input.module.scss';\n \n-const ResetButton = ({ onKeyUp }) => {\n+const ResetButton = ({ onClick }) => {\n \t\n \treturn (\n \t\t<button \n \t\t\tclassName={`${InputStyle['reset-button']}`} \n-\t\t\tonKeyUp={(evt) => {\n-\t\t\t\tonKeyUp && onKeyUp(evt);}}\n+\t\t\tonClick={(evt) => {\n+\t\t\t\tonClick && onClick(evt);}}\n \t\t\t>\n \t\t\t<span className=\"hidden\">초기화</span>\n \t\t</button>\n \t);\n };\n \n ResetButton.propTypes = {\n-\tonKeyUp: PropTypes.func,\n+\tonClick: PropTypes.func,\n };\n export default ResetButton;\n"
+                }
+            ],
+            "date": 1694355464387,
+            "name": "Commit-0",
+            "content": "import PropTypes from 'prop-types';\nimport InputStyle from '../Input.module.scss';\n\nconst ResetButton = ({ inputRef, setValue }) => {\n\tconst onClick = () => {\n\t\tinputRef.current.value = '';\n\t\tinputRef.current.focus();\n\t\tsetValue('');\n\t};\n\n\treturn (\n\t\t<button className={`${InputStyle['reset-button']}`} onClick={onClick}>\n\t\t\t<span className=\"hidden\">초기화</span>\n\t\t</button>\n\t);\n};\n\nResetButton.propTypes = {\n\tinputRef: PropTypes.object,\n\tsetValue: PropTypes.func,\n};\nexport default ResetButton;\n"
+        }
+    ]
+}

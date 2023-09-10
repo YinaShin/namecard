@@ -1,0 +1,140 @@
+@import '../../styles/scss/_variables';
+@import '../../styles/scss/_mixins';
+
+.button-default {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid transparent;
+	margin-top: var(--spacing);
+	border-radius: 8px;
+	vertical-align: middle;
+
+	&.x-large {
+		@include text18{
+            font-weight:500;
+        };
+		padding: 12px 16px 14px 16px;
+        border-radius:12px;
+
+		&.button-icon {
+			padding: 15px;
+		}
+	}
+
+	&.large {
+		@include text16;
+
+		min-width: 80px;
+		padding: 10px 16px 12px 16px;
+		text-align: center;
+
+		&.button-icon {
+			min-width: unset;
+			padding: 11px;
+		}
+	}
+
+	&.medium {
+		@include text14;
+
+		padding: 7px 12px 7px 12px;
+	}
+
+    &.medium02 {
+		@include text14;
+
+		padding: 2px 12px 4px 12px;
+		border-radius: 6px;
+	}
+
+	&.small {
+		@include text11;
+
+		padding: 3px 8px 3px 7px;
+		border-radius: 4px;
+	}
+
+	&.primary {
+		background: $primary100;
+		color: $white;
+
+		&:active {
+			background: $primary200;
+		}
+
+		&:disabled {
+			background: $greyscale200;
+			color: $greyscale400;
+			pointer-events: none;
+		}
+	}
+
+	&.secondary-2nd {
+		border-color: $primary100;
+		background: $white;
+		color: $primary100;
+
+		&:active {
+			border-color: $primary200;
+            background: $greyscale250;
+			color: $primary200;
+		}
+
+		&:disabled {
+            border-color: $greyscale100;
+			background: $greyscale100;
+			color: $greyscale400;
+			pointer-events: none;
+		}
+	}
+
+	&.secondary-3rd {
+		border-color: $greyscale300;
+		background: $white;
+		color: $greyscale900;
+
+		&:active {
+			border-color: $greyscale400;
+			background: $greyscale300;
+			color: $greyscale900;
+		}
+
+		&:disabled {
+			border-color: transparent;
+			background: $greyscale100;
+			color: $greyscale400;
+			pointer-events: none;
+		}
+	}
+
+	&.secondary-4th {
+		background: $greyscale200;
+		color: $greyscale900;
+
+		&:active {
+			background: $greyscale300;
+		}
+
+		&:disabled {
+			background: $greyscale100;
+			color: $greyscale400;
+			pointer-events: none;
+		}
+	}
+}
+
+// TODO: ripple 효과
+// @keyframes effect {
+// 	0% {
+// 		transform: scale(0, 0);
+// 		opacity: 1;
+// 	}
+// 	40% {
+// 		opacity: 1;
+// 	}
+// 	100% {
+// 		opacity: 0;
+// 		transform: scale(1000, 1000);
+// 	}
+// }

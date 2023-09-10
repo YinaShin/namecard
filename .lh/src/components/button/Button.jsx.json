@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 7,
+            "activePatchIndex": 11,
             "patches": [
                 {
                     "date": 1693922458934,
@@ -36,6 +36,22 @@
                 {
                     "date": 1693924409942,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,13 @@\n-import { bool, node, string, object, func } from 'prop-types';\n+import { oneOf, bool, node, string, object, func } from 'prop-types';\n import { BUTTON_SIZE_TYPES, BUTTON_CLASS_TYPES } from './constants';\n \n-const Button = ({ id, disabled, type, className, children, style}) => {\n+const Button = ({ id, disabled, uiType, className, children, style}) => {\n \treturn (\n \t\t<button\n             id={id}\n             disabled={disabled}\n-            type={BUTTON_CLASS_TYPES}\n+            uiType={BUTTON_CLASS_TYPES}\n \t\t\tclassName={`${className && className}`}\n             style={style}\n             onClick={(e) => {}}\n             buttonSize={BUTTON_SIZE_TYPES}\n@@ -23,7 +23,9 @@\n     style: object,\n \tchildren: node,\n \tclassName: string,\n     onClick: func,\n+    uiType: oneOf(Object.values(BUTTON_CLASS_TYPES)),\n+    buttonSize: oneOf(Object.values(BUTTON_SIZE_TYPES)),\n };\n \n export default Button;\n"
+                },
+                {
+                    "date": 1694329243771,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,17 +1,18 @@\n import { oneOf, bool, node, string, object, func } from 'prop-types';\n import { BUTTON_SIZE_TYPES, BUTTON_CLASS_TYPES } from './constants';\n+import ButtonStyle from './Button.module.scss';\n \n-const Button = ({ id, disabled, uiType, className, children, style}) => {\n+const Button = ({ id, disabled, uiType, className, children, style, buttonSize}) => {\n \treturn (\n \t\t<button\n             id={id}\n             disabled={disabled}\n-            uiType={BUTTON_CLASS_TYPES}\n-\t\t\tclassName={`${className && className}`}\n+            className={`${ButtonStyle['button-default']} ${ButtonStyle[buttonSize]} ${\n+                ButtonStyle[uiType]\n+            } ${className && className}`}\n             style={style}\n             onClick={(e) => {}}\n-            buttonSize={BUTTON_SIZE_TYPES}\n         >\n             {children}\n         </button>\n \t);\n"
+                },
+                {
+                    "date": 1694329818619,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,18 +1,34 @@\n import { oneOf, bool, node, string, object, func } from 'prop-types';\n import { BUTTON_SIZE_TYPES, BUTTON_CLASS_TYPES } from './constants';\n import ButtonStyle from './Button.module.scss';\n \n-const Button = ({ id, disabled, uiType, className, children, style, buttonSize}) => {\n+const Button = ({ \n+    id, \n+    disabled = false, \n+    uiType = BUTTON_CLASS_TYPES.SECONDARY03, \n+    buttonSize = BUTTON_SIZE_TYPES.LARGE,\n+    className = '', \n+    onClick = undefined,\n+    spacing = 0,\n+    children, \n+    style,\n+}) => {\n+\n+    const onClickHandler = (e) => {\n+\t\tonClick && onClick(e);\n+\t};\n \treturn (\n \t\t<button\n             id={id}\n             disabled={disabled}\n             className={`${ButtonStyle['button-default']} ${ButtonStyle[buttonSize]} ${\n                 ButtonStyle[uiType]\n             } ${className && className}`}\n             style={style}\n-            onClick={(e) => {}}\n+            onClick={(e) => {\n+                !disabled && onClickHandler(e);\n+            }}\n         >\n             {children}\n         </button>\n \t);\n"
+                },
+                {
+                    "date": 1694330174331,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n             disabled={disabled}\n             className={`${ButtonStyle['button-default']} ${ButtonStyle[buttonSize]} ${\n                 ButtonStyle[uiType]\n             } ${className && className}`}\n-            style={style}\n+            style={{ ...{ '--spacing': `${spacing}px` }, ...style }}\n             onClick={(e) => {\n                 !disabled && onClickHandler(e);\n             }}\n         >\n"
+                },
+                {
+                    "date": 1694331995854,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,10 +4,10 @@\n \n const Button = ({ \n     id, \n     disabled = false, \n-    uiType = BUTTON_CLASS_TYPES.SECONDARY03, \n-    buttonSize = BUTTON_SIZE_TYPES.LARGE,\n+    uiType = BUTTON_CLASS_TYPES.PRIMARY, \n+    buttonSize = BUTTON_SIZE_TYPES.X_LARGE,\n     className = '', \n     onClick = undefined,\n     spacing = 0,\n     children, \n"
                 }
             ],
             "date": 1693922458934,

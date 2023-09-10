@@ -3,11 +3,23 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 3,
             "patches": [
                 {
                     "date": 1693919376105,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1694367158795,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n $greyscale900: #121619;\n $greyscale800: #21272a;\n $greyscale700: #343a3f;\n $greyscale600: #565c63;\n-$greyscale500: #808892;\n+$greyscale500: #AAB0B8\n $greyscale550: #6C747E;\n $greyscale400: #b9c1c9;\n $greyscale300: #d6dbe1;\n $greyscale250: #E1E6EC;\n"
+                },
+                {
+                    "date": 1694367164960,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n $greyscale900: #121619;\n $greyscale800: #21272a;\n $greyscale700: #343a3f;\n $greyscale600: #565c63;\n-$greyscale500: #AAB0B8\n+$greyscale500: #AAB0B8;\n $greyscale550: #6C747E;\n $greyscale400: #b9c1c9;\n $greyscale300: #d6dbe1;\n $greyscale250: #E1E6EC;\n"
+                },
+                {
+                    "date": 1694367313398,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,14 +13,14 @@\n $greyscale700: #343a3f;\n $greyscale600: #565c63;\n $greyscale500: #AAB0B8;\n $greyscale550: #6C747E;\n-$greyscale400: #b9c1c9;\n-$greyscale300: #d6dbe1;\n+$greyscale400: #c6cbd0;\n+$greyscale300: #dde1e4;\n $greyscale250: #E1E6EC;\n-$greyscale200: #ebeff5;\n-$greyscale100: #f3f6fB;\n-$greyscale50: #f8f9fc;\n+$greyscale200: #ebeef0;\n+$greyscale100: #f7f7f8;\n+$greyscale50: #fdfdfd;\n $white: #fff;\n \n $positiveBlue: #0471e9;\n $negativeRed: #D61111;\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1693919376105,
